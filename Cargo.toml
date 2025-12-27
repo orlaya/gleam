@@ -1,7 +1,7 @@
 [workspace]
 resolver = "2"
 members = [
-  "gleam-bin",
+  "gleam-binary",
   "compiler-cli",
   "compiler-core",
   "test-helpers-rs",

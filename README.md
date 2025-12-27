@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="images/lucy.png" alt="Lucy, Gleam's mascot">
+  <img src="~~docs/images/lucy.png" alt="Lucy, Gleam's mascot">
 </p>
 
 <p align="center">
