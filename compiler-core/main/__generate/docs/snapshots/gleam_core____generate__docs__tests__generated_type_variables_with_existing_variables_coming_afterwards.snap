@@ -1,0 +1,18 @@
+---
+source: compiler-core/src_refactored/__generate/docs/tests.rs
+assertion_line: 1015
+expression: output
+snapshot_kind: text
+---
+---- SOURCE CODE
+-- main.gleam
+
+pub fn wibble(_a, _b, _c: b, _d: a) {
+  todo
+}
+
+
+---- VALUES
+
+--- wibble
+<pre><code>pub fn wibble(a: c, b: d, c: b, d: a) -> e</code></pre>

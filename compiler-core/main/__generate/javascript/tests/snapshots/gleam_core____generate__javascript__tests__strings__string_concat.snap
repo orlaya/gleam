@@ -1,0 +1,17 @@
+---
+source: compiler-core/src_refactored/__generate/javascript/tests/strings.rs
+assertion_line: 100
+expression: "\npub fn go() {\n  \"Hello, \" <> \"Joe\"\n}\n"
+snapshot_kind: text
+---
+----- SOURCE CODE
+
+pub fn go() {
+  "Hello, " <> "Joe"
+}
+
+
+----- COMPILED JAVASCRIPT
+export function go() {
+  return "Hello, " + "Joe";
+}

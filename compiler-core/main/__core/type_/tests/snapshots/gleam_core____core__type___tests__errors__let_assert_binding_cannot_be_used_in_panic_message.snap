@@ -1,0 +1,21 @@
+---
+source: compiler-core/src_refactored/__core/type_/tests/errors.rs
+assertion_line: 2866
+expression: "\npub fn main() {\n  let assert Ok(message) = Error(\"Not Message\") as { \"Uh oh: \" <> message }\n}\n"
+snapshot_kind: text
+---
+----- SOURCE CODE
+
+pub fn main() {
+  let assert Ok(message) = Error("Not Message") as { "Uh oh: " <> message }
+}
+
+
+----- ERROR
+error: Unknown variable
+  ┌─ /src/one/two.gleam:3:67
+  │
+3 │   let assert Ok(message) = Error("Not Message") as { "Uh oh: " <> message }
+  │                                                                   ^^^^^^^
+
+The name `message` is not in scope here.

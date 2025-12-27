@@ -1,0 +1,19 @@
+---
+source: compiler-core/src_refactored/__core/type_/tests/warnings.rs
+assertion_line: 1695
+expression: "pub fn main() {\n          panic()\n        }"
+snapshot_kind: text
+---
+----- SOURCE CODE
+pub fn main() {
+          panic()
+        }
+
+----- WARNING
+warning: Panic used as a function
+  ┌─ /src/warning/wrn.gleam:2:11
+  │
+2 │           panic()
+  │           ^^^^^^^
+
+`panic` is not a function, you can just write `panic` instead of `panic()`.

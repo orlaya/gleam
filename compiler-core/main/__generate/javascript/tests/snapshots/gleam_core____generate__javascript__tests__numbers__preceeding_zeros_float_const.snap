@@ -1,0 +1,13 @@
+---
+source: compiler-core/src_refactored/__generate/javascript/tests/numbers.rs
+assertion_line: 284
+expression: "\npub const x = 09_179.1\n"
+snapshot_kind: text
+---
+----- SOURCE CODE
+
+pub const x = 09_179.1
+
+
+----- COMPILED JAVASCRIPT
+export const x = 9_179.1;

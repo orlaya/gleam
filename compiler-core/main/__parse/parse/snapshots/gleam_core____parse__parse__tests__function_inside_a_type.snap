@@ -1,0 +1,25 @@
+---
+source: compiler-core/src_refactored/__parse/parse/tests.rs
+assertion_line: 1711
+expression: "\ntype Wibble {\n  fn wobble() {}\n}\n"
+snapshot_kind: text
+---
+----- SOURCE CODE
+
+type Wibble {
+  fn wobble() {}
+}
+
+
+----- ERROR
+error: Syntax error
+  ┌─ /src/parse/error.gleam:3:3
+  │
+3 │   fn wobble() {}
+  │   ^^ I was not expecting this
+
+Found the keyword `fn`, expected one of: 
+- `}`
+- a record constructor
+Hint: Gleam is not an object oriented programming language so
+functions are declared separately from types.

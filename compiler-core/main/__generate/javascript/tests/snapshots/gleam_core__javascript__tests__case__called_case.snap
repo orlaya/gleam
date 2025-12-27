@@ -1,0 +1,26 @@
+---
+source: compiler-core/src/javascript/tests/case.rs
+assertion_line: 212
+expression: "\npub fn go(x, y) {\n  case x {\n    0 -> y\n    _ -> y\n  }()\n}\n"
+snapshot_kind: text
+---
+----- SOURCE CODE
+
+pub fn go(x, y) {
+  case x {
+    0 -> y
+    _ -> y
+  }()
+}
+
+
+----- COMPILED JAVASCRIPT
+export function go(x, y) {
+  let _block;
+  if (x === 0) {
+    _block = y;
+  } else {
+    _block = y;
+  }
+  return _block();
+}

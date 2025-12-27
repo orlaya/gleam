@@ -1,0 +1,26 @@
+---
+source: compiler-core/src_refactored/__core/type_/tests/errors.rs
+assertion_line: 306
+expression: "fn(x: Int) -> Float { x }"
+snapshot_kind: text
+---
+----- SOURCE CODE
+fn(x: Int) -> Float { x }
+
+----- ERROR
+error: Type mismatch
+  ┌─ /src/one/two.gleam:1:23
+  │
+1 │ fn(x: Int) -> Float { x }
+  │                       ^
+
+The type of this returned value doesn't match the return type
+annotation of this function.
+
+Expected type:
+
+    Float
+
+Found type:
+
+    Int

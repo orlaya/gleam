@@ -1,0 +1,34 @@
+---
+source: compiler-core/src/javascript/tests/assignments.rs
+expression: "\npub fn main() {\n  let assert \"Game \" <> id = \"Game 1\"\n}\n"
+---
+----- SOURCE CODE
+
+pub fn main() {
+  let assert "Game " <> id = "Game 1"
+}
+
+
+----- COMPILED JAVASCRIPT
+import { makeError } from "../gleam.mjs";
+
+const FILEPATH = "src/module.gleam";
+
+export function main() {
+  let $ = "Game 1";
+  let id;
+  if ($.startsWith("Game ")) {
+    id = $.slice(5);
+  } else {
+    throw makeError(
+      "let_assert",
+      FILEPATH,
+      "my/mod",
+      3,
+      "main",
+      "Pattern match failed, no pattern matched the value.",
+      { value: $, start: 19, end: 54, pattern_start: 30, pattern_end: 43 }
+    )
+  }
+  return $;
+}

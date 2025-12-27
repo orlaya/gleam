@@ -1,0 +1,16 @@
+---
+source: compiler-core/src_refactored/__generate/javascript/tests/functions.rs
+assertion_line: 144
+expression: "pub fn main() {\n  fn(x) { x }(1)\n}\n"
+snapshot_kind: text
+---
+----- SOURCE CODE
+pub fn main() {
+  fn(x) { x }(1)
+}
+
+
+----- COMPILED JAVASCRIPT
+export function main() {
+  return 1;
+}

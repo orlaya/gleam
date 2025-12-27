@@ -1,0 +1,20 @@
+---
+source: compiler-core/src_refactored/__core/type_/tests/functions.rs
+assertion_line: 26
+expression: "\n@external(erlang, \"\", \"\")\nfn main(wibble x: Int, y: Int) -> Int\n"
+snapshot_kind: text
+---
+----- SOURCE CODE
+
+@external(erlang, "", "")
+fn main(wibble x: Int, y: Int) -> Int
+
+
+----- ERROR
+error: Unlabelled argument after labelled argument
+  ┌─ /src/one/two.gleam:3:24
+  │
+3 │ fn main(wibble x: Int, y: Int) -> Int
+  │                        ^^^^^^
+
+All unlabelled arguments must come before any labelled arguments.

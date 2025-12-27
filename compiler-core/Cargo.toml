@@ -5,84 +5,86 @@ authors = ["Louis Pilfold <louis@lpil.uk>"]
 edition = "2024"
 license-file = "LICENCE"
 
+[lib]
+path = "main/lib.rs"
+
 [dependencies]
-# Error message and warning formatting
-codespan-reporting = "0"
-# Graph data structures
-petgraph = "0.8"
-# Cap'n Proto binary format runtime
-capnp = "0"
+# Encryption
+age = { version = "0.11", features = ["armor"] }
 # Template rendering
 askama = "0"
+async-trait.workspace = true
+base16.workspace = true
+# Bijective (bi-directional) hashmap
+bimap = "0.6.3"
+# Binary format de-serialization
+bincode = { version = "2", features = ["alloc", "serde"] }
+# Manipulating bit arrays
+bitvec = { version = "1", features = ["serde"] }
+camino = { workspace = true, features = ["serde1"] }
+# Cap'n Proto binary format runtime
+capnp = "0"
+# Error message and warning formatting
+codespan-reporting = "0"
+debug-ignore.workspace = true
+# XDG directory locations
+dirs-next = "2"
+ecow = { workspace = true, features = ["serde"] }
+flate2.workspace = true
+futures.workspace = true
+# cross platform single glob and glob set matching
+globset = { version = "0", features = ["serde1"] }
+hexpm.workspace = true
+http.workspace = true
+# Memory arena using ids rather than references
+id-arena = "2"
+im.workspace = true
+indexmap = "2.12.1"
+itertools.workspace = true
+lsp-server.workspace = true
+lsp-types.workspace = true
+# Parsing of arbitrary width int values
+num-bigint = { version = "0.4.6", features = ["serde"] }
+num-traits = "0.2.19"
+# Used for converting absolute path to relative path
+pathdiff = { version = "0", features = ["camino"] }
+# Graph data structures
+petgraph = "0.8"
+# Pubgrub dependency resolution algorithm
+pubgrub = "0.3"
 # Markdown parsing
 pulldown-cmark = { version = "0", default-features = false, features = [
   "html",
 ] }
-# Non-empty vectors
-vec1 = "1"
-# XDG directory locations
-dirs-next = "2"
-# SPDX license parsing
-spdx = "0"
-# Binary format de-serialization
-bincode = { version = "2", features = ["alloc", "serde"] }
-# cross platform single glob and glob set matching
-globset = { version = "0", features = ["serde1"] }
-# Checksums
-xxhash-rust = { version = "0", features = ["xxh3"] }
-# Pubgrub dependency resolution algorithm
-pubgrub = "0.3"
-# Used for converting absolute path to relative path
-pathdiff = { version = "0", features = ["camino"] }
-# Memory arena using ids rather than references
-id-arena = "2"
-# Unicode grapheme traversal
-unicode-segmentation = "1.12.0"
-# Bijective (bi-directional) hashmap
-bimap = "0.6.3"
-# Parsing of arbitrary width int values
-num-bigint = { version = "0.4.6", features = ["serde"] }
-num-traits = "0.2.19"
-# Encryption
-age = { version = "0.11", features = ["armor"] }
 radix_trie = "0.2.1"
-# Ensuring recursive type-checking doesn't stack overflow
-stacker = "0.1.21"
-# Manipulating bit arrays
-bitvec = { version = "1", features = ["serde"] }
-
-async-trait.workspace = true
-base16.workspace = true
-camino = { workspace = true, features = ["serde1"] }
-debug-ignore.workspace = true
-ecow = { workspace = true, features = ["serde"] }
-flate2.workspace = true
-futures.workspace = true
-hexpm.workspace = true
-http.workspace = true
-im.workspace = true
-itertools.workspace = true
-lsp-server.workspace = true
-lsp-types.workspace = true
 regex.workspace = true
 serde.workspace = true
 serde_json.workspace = true
+# SPDX license parsing
+spdx = "0"
+# Ensuring recursive type-checking doesn't stack overflow
+stacker = "0.1.21"
 strum.workspace = true
 tar.workspace = true
 termcolor.workspace = true
 thiserror.workspace = true
 toml.workspace = true
 tracing.workspace = true
-indexmap = "2.12.1"
-
-[build-dependencies]
-# Data (de)serialisation
-serde_derive = "1"
-# Cap'n Proto binary format codegen
-capnpc = "0"
+# Unicode grapheme traversal
+unicode-segmentation = "1.12.0"
+# Non-empty vectors
+vec1 = "1"
+# Checksums
+xxhash-rust = { version = "0", features = ["xxh3"] }
 
 [dev-dependencies]
-pretty_assertions.workspace = true
 insta.workspace = true
+pretty_assertions.workspace = true
 # Random value generation
 rand = "0.9"
+
+[build-dependencies]
+# Cap'n Proto binary format codegen
+capnpc = "0"
+# Data (de)serialisation
+serde_derive = "1"

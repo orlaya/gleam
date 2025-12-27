@@ -1,0 +1,28 @@
+---
+source: compiler-core/src_refactored/__core/type_/tests/errors.rs
+assertion_line: 8
+expression: "fn x() { \"test\" }\n\nfn main() {\n    let a = <<1:size(x())>>\n    a\n}"
+snapshot_kind: text
+---
+----- SOURCE CODE
+fn x() { "test" }
+
+fn main() {
+    let a = <<1:size(x())>>
+    a
+}
+
+----- ERROR
+error: Type mismatch
+  ┌─ /src/one/two.gleam:4:22
+  │
+4 │     let a = <<1:size(x())>>
+  │                      ^^^
+
+Expected type:
+
+    Int
+
+Found type:
+
+    String

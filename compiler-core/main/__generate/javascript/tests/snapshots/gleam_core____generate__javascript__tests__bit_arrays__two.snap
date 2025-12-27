@@ -1,0 +1,19 @@
+---
+source: compiler-core/src_refactored/__generate/javascript/tests/bit_arrays.rs
+assertion_line: 33
+expression: "\npub fn go() {\n  <<256, 4>>\n}\n"
+snapshot_kind: text
+---
+----- SOURCE CODE
+
+pub fn go() {
+  <<256, 4>>
+}
+
+
+----- COMPILED JAVASCRIPT
+import { toBitArray } from "../gleam.mjs";
+
+export function go() {
+  return toBitArray([0, 4]);
+}

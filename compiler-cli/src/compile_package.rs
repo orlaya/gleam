@@ -6,7 +6,7 @@ use camino::Utf8Path;
 use ecow::EcoString;
 use gleam_core::{
     Error, Result,
-    build::{
+    compiler::{
         Mode, NullTelemetry, PackageCompiler, StaleTracker, Target, TargetCodegenConfiguration,
     },
     metadata,

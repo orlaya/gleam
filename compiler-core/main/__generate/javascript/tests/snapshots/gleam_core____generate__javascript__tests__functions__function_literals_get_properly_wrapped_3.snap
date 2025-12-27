@@ -1,0 +1,16 @@
+---
+source: compiler-core/src_refactored/__generate/javascript/tests/functions.rs
+assertion_line: 453
+expression: "pub fn main() {\n  { let a = fn(n) { n + 1 } }(10)\n}\n"
+snapshot_kind: text
+---
+----- SOURCE CODE
+pub fn main() {
+  { let a = fn(n) { n + 1 } }(10)
+}
+
+
+----- COMPILED JAVASCRIPT
+export function main() {
+  return ((n) => { return n + 1; })(10);
+}

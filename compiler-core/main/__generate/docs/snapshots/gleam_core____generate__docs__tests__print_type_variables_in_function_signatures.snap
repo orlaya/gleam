@@ -1,0 +1,29 @@
+---
+source: compiler-core/src_refactored/__generate/docs/tests.rs
+assertion_line: 845
+expression: output
+snapshot_kind: text
+---
+---- SOURCE CODE
+-- main.gleam
+
+pub type Dict(key, value)
+
+pub fn insert(dict: Dict(key, value), key: key, value: value) -> Dict(key, value) {
+  dict
+}
+
+
+---- TYPES
+
+--- Dict
+<pre><code>pub type Dict(key, value)</code></pre>
+
+---- VALUES
+
+--- insert
+<pre><code>pub fn insert(
+  dict: Dict(key, value),
+  key: key,
+  value: value,
+) -> Dict(key, value)</code></pre>

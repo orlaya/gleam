@@ -1,0 +1,11 @@
+---
+source: compiler-core/src_refactored/__generate/javascript/tests/consts.rs
+assertion_line: 121
+expression: pub const a = Nil
+snapshot_kind: text
+---
+----- SOURCE CODE
+pub const a = Nil
+
+----- COMPILED JAVASCRIPT
+export const a = undefined;

@@ -1,0 +1,23 @@
+---
+source: compiler-core/src_refactored/__core/type_/tests/warnings.rs
+assertion_line: 4297
+expression: "\npub type Wibble {\n  Wibble(field: Int)\n}\n\npub fn main(wibble: Wibble) { wibble.field != wibble.field }\n"
+snapshot_kind: text
+---
+----- SOURCE CODE
+
+pub type Wibble {
+  Wibble(field: Int)
+}
+
+pub fn main(wibble: Wibble) { wibble.field != wibble.field }
+
+
+----- WARNING
+warning: Redundant comparison
+  ┌─ /src/warning/wrn.gleam:6:31
+  │
+6 │ pub fn main(wibble: Wibble) { wibble.field != wibble.field }
+  │                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^ This is always `False`
+
+This comparison is redundant since it always fails.

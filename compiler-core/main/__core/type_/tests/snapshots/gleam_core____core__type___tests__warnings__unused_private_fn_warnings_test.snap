@@ -1,0 +1,17 @@
+---
+source: compiler-core/src_refactored/__core/type_/tests/warnings.rs
+assertion_line: 252
+expression: "fn a() { 1 }"
+snapshot_kind: text
+---
+----- SOURCE CODE
+fn a() { 1 }
+
+----- WARNING
+warning: Unused private function
+  ┌─ /src/warning/wrn.gleam:1:1
+  │
+1 │ fn a() { 1 }
+  │ ^^^^^^ This private function is never used
+
+Hint: You can safely remove it.

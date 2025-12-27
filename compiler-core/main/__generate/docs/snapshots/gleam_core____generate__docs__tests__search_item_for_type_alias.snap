@@ -1,0 +1,46 @@
+---
+source: compiler-core/src_refactored/__generate/docs/tests.rs
+assertion_line: 1403
+expression: output
+snapshot_kind: text
+---
+------ SOURCE CODE
+
+/// This is a type alias to a list
+/// of integer values.
+/// ## Examples
+/// ```
+/// // Examples
+/// ```
+pub type IntList = List(Int)
+
+------------------------------------
+
+TITLE:         main
+PARENT TITLE:  main
+TYPE:          Module
+REFERENCE:     main.html
+CONTENT:
+
+------------------------------------
+TITLE:         IntList
+PARENT TITLE:  module
+TYPE:          Type
+REFERENCE:     module.html#IntList
+CONTENT:
+```
+pub type IntList =
+  List(Int)
+```
+ This is a type alias to a list
+ of integer values.
+ ## Examples
+ 
+ // Examples
+ 
+
+
+Synonyms:
+module.IntList
+module IntList
+------------------------------------

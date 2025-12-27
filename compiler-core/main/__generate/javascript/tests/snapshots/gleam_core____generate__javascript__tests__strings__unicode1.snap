@@ -1,0 +1,17 @@
+---
+source: compiler-core/src_refactored/__generate/javascript/tests/strings.rs
+assertion_line: 5
+expression: "\npub fn emoji() -> String {\n  \"\\u{1f600}\"\n}\n"
+snapshot_kind: text
+---
+----- SOURCE CODE
+
+pub fn emoji() -> String {
+  "\u{1f600}"
+}
+
+
+----- COMPILED JAVASCRIPT
+export function emoji() {
+  return "\u{1f600}";
+}

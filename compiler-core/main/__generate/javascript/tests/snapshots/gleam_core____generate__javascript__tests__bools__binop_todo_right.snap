@@ -1,0 +1,29 @@
+---
+source: compiler-core/src_refactored/__generate/javascript/tests/bools.rs
+assertion_line: 180
+expression: "pub fn negate(x) {\n    x && todo\n}"
+snapshot_kind: text
+---
+----- SOURCE CODE
+pub fn negate(x) {
+    x && todo
+}
+
+----- COMPILED JAVASCRIPT
+import { makeError } from "../gleam.mjs";
+
+const FILEPATH = "src/module.gleam";
+
+export function negate(x) {
+  return x && (() => {
+    throw makeError(
+      "todo",
+      FILEPATH,
+      "my/mod",
+      2,
+      "negate",
+      "`todo` expression evaluated. This code has not yet been implemented.",
+      {}
+    )
+  })();
+}

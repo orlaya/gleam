@@ -1,0 +1,25 @@
+---
+source: compiler-core/src_refactored/__generate/javascript/tests/functions.rs
+assertion_line: 212
+expression: "import for.{class}\n\npub fn export() {\n  class()\n}\n"
+snapshot_kind: text
+---
+----- SOURCE CODE
+-- for.gleam
+pub fn class() { 1 }
+
+-- main.gleam
+import for.{class}
+
+pub fn export() {
+  class()
+}
+
+
+----- COMPILED JAVASCRIPT
+import * as $for from "../for.mjs";
+import { class$ } from "../for.mjs";
+
+export function export$() {
+  return class$();
+}

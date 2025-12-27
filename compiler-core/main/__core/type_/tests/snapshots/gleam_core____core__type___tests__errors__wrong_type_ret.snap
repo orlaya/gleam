@@ -1,0 +1,29 @@
+---
+source: compiler-core/src_refactored/__core/type_/tests/errors.rs
+assertion_line: 1576
+expression: "pub fn main(x: something) -> Int {\n  let y = x\n  y\n}"
+snapshot_kind: text
+---
+----- SOURCE CODE
+pub fn main(x: something) -> Int {
+  let y = x
+  y
+}
+
+----- ERROR
+error: Type mismatch
+  ┌─ /src/one/two.gleam:3:3
+  │
+3 │   y
+  │   ^
+
+The type of this returned value doesn't match the return type
+annotation of this function.
+
+Expected type:
+
+    Int
+
+Found type:
+
+    something

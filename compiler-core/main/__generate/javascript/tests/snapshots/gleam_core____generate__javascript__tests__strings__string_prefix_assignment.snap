@@ -1,0 +1,26 @@
+---
+source: compiler-core/src_refactored/__generate/javascript/tests/strings.rs
+assertion_line: 170
+expression: "\npub fn go(x) {\n  case x {\n    \"Hello, \" as greeting <> name -> greeting\n    _ -> \"Unknown\"\n  }\n}\n"
+snapshot_kind: text
+---
+----- SOURCE CODE
+
+pub fn go(x) {
+  case x {
+    "Hello, " as greeting <> name -> greeting
+    _ -> "Unknown"
+  }
+}
+
+
+----- COMPILED JAVASCRIPT
+export function go(x) {
+  if (x.startsWith("Hello, ")) {
+    let greeting = "Hello, ";
+    let name = x.slice(7);
+    return greeting;
+  } else {
+    return "Unknown";
+  }
+}

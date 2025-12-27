@@ -1,0 +1,13 @@
+---
+source: compiler-core/src_refactored/__generate/javascript/tests/externals.rs
+assertion_line: 37
+expression: "\n@external(javascript, \"utils\", \"inspect\")\npub fn show(x: anything) -> Nil"
+snapshot_kind: text
+---
+----- SOURCE CODE
+
+@external(javascript, "utils", "inspect")
+pub fn show(x: anything) -> Nil
+
+----- TYPESCRIPT DEFINITIONS
+export function show(x: any): undefined;

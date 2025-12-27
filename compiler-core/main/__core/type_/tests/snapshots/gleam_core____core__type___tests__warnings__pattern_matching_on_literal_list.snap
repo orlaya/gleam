@@ -1,0 +1,29 @@
+---
+source: compiler-core/src_refactored/__core/type_/tests/warnings.rs
+assertion_line: 1176
+expression: "pub fn main() {\n        case [1, 2] {\n            _ -> Nil\n        }\n      }"
+snapshot_kind: text
+---
+----- SOURCE CODE
+pub fn main() {
+        case [1, 2] {
+            _ -> Nil
+        }
+      }
+
+----- WARNING
+warning: Redundant list
+  ┌─ /src/warning/wrn.gleam:2:14
+  │
+2 │         case [1, 2] {
+  │              ^^^^^^ You can remove this list wrapper
+
+Instead of building a list and matching on it, you can match on its
+contents directly.
+A case expression can take multiple subjects separated by commas like this:
+
+    case one_subject, another_subject {
+      _, _ -> todo
+    }
+
+See: https://tour.gleam.run/flow-control/multiple-subjects/

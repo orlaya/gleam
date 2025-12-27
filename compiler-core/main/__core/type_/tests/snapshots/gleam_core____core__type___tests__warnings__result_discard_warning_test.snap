@@ -1,0 +1,22 @@
+---
+source: compiler-core/src_refactored/__core/type_/tests/warnings.rs
+assertion_line: 75
+expression: "\npub fn wibble() { Ok(5) }\npub fn main() {\n  wibble()\n  5\n}"
+snapshot_kind: text
+---
+----- SOURCE CODE
+
+pub fn wibble() { Ok(5) }
+pub fn main() {
+  wibble()
+  5
+}
+
+----- WARNING
+warning: Unused result value
+  ┌─ /src/warning/wrn.gleam:4:3
+  │
+4 │   wibble()
+  │   ^^^^^^^^ The Result value created here is unused
+
+Hint: If you are sure you don't need it you can assign it to `_`.

@@ -1,0 +1,35 @@
+---
+source: compiler-core/src_refactored/__core/type_/tests/errors.rs
+assertion_line: 2626
+expression: "\npub type A {\n  A(a: Int, b: Int)\n}\n\npub type B {\n  B(a: Int, b: Int)\n}\n\npub fn b_to_a(value: B) {\n  A(..value, b: 5)\n}\n"
+snapshot_kind: text
+---
+----- SOURCE CODE
+
+pub type A {
+  A(a: Int, b: Int)
+}
+
+pub type B {
+  B(a: Int, b: Int)
+}
+
+pub fn b_to_a(value: B) {
+  A(..value, b: 5)
+}
+
+
+----- ERROR
+error: Type mismatch
+   ┌─ /src/one/two.gleam:11:7
+   │
+11 │   A(..value, b: 5)
+   │       ^^^^^
+
+Expected type:
+
+    A
+
+Found type:
+
+    B

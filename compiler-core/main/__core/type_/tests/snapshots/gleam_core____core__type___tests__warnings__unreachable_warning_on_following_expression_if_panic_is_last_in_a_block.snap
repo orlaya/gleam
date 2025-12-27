@@ -1,0 +1,22 @@
+---
+source: compiler-core/src_refactored/__core/type_/tests/warnings.rs
+assertion_line: 1827
+expression: "pub fn main() {\n          let _ = {\n            panic\n          }\n          1\n        }"
+snapshot_kind: text
+---
+----- SOURCE CODE
+pub fn main() {
+          let _ = {
+            panic
+          }
+          1
+        }
+
+----- WARNING
+warning: Unreachable code
+  ┌─ /src/warning/wrn.gleam:5:11
+  │
+5 │           1
+  │           ^
+
+This code is unreachable because it comes after a `panic`.

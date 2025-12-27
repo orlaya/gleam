@@ -1,0 +1,15 @@
+---
+source: compiler-core/src_refactored/__core/type_/tests/warnings.rs
+assertion_line: 469
+expression: "pub fn main() { let _ = ----7 }"
+snapshot_kind: text
+---
+----- SOURCE CODE
+pub fn main() { let _ = ----7 }
+
+----- WARNING
+warning: Unnecessary double negation (--) on integer
+  ┌─ /src/warning/wrn.gleam:1:25
+  │
+1 │ pub fn main() { let _ = ----7 }
+  │                         ^^^^ You can safely remove this.

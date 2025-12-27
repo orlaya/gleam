@@ -4,11 +4,13 @@ members = [
   "gleam-bin",
   "compiler-cli",
   "compiler-core",
-  "compiler-wasm",
   "test-helpers-rs",
   "test-output",
   "test-package-compiler",
   "test-project-compiler",
+]
+exclude = [
+  "_insta_migrations",
 ]
 
 # common dependencies

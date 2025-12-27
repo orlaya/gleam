@@ -1,0 +1,22 @@
+---
+source: compiler-core/src_refactored/__parse/parse/tests.rs
+assertion_line: 1553
+expression: "\npub fn main() {\n  let Wibble(arg::) = todo\n}\n"
+snapshot_kind: text
+---
+----- SOURCE CODE
+
+pub fn main() {
+  let Wibble(arg::) = todo
+}
+
+
+----- ERROR
+error: Syntax error
+  ┌─ /src/parse/error.gleam:3:18
+  │
+3 │   let Wibble(arg::) = todo
+  │                  ^ I was not expecting this
+
+Found `:`, expected one of: 
+- `)`

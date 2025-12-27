@@ -1,0 +1,23 @@
+---
+source: compiler-core/src_refactored/__core/type_/tests/dead_code_detection.rs
+assertion_line: 405
+expression: "\ntype Wibble = Int\n\npub fn used() -> Int {\n  10\n}\n"
+snapshot_kind: text
+---
+----- SOURCE CODE
+
+type Wibble = Int
+
+pub fn used() -> Int {
+  10
+}
+
+
+----- WARNING
+warning: Unused private type
+  ┌─ /src/warning/wrn.gleam:2:1
+  │
+2 │ type Wibble = Int
+  │ ^^^^^^^^^^^^^^^^^ This private type is never used
+
+Hint: You can safely remove it.

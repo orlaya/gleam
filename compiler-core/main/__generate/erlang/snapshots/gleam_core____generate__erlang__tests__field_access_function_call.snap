@@ -1,0 +1,32 @@
+---
+source: compiler-core/src_refactored/__generate/erlang/tests.rs
+assertion_line: 455
+expression: "\npub type FnBox {\n  FnBox(f: fn(Int) -> Int)\n}\n\npub fn main() {\n    let b = FnBox(f: fn(x) { x })\n    b.f(5)\n}\n"
+snapshot_kind: text
+---
+----- SOURCE CODE
+
+pub type FnBox {
+  FnBox(f: fn(Int) -> Int)
+}
+
+pub fn main() {
+    let b = FnBox(f: fn(x) { x })
+    b.f(5)
+}
+
+
+----- COMPILED ERLANG
+-module(my@mod).
+-compile([no_auto_import, nowarn_unused_vars, nowarn_unused_function, nowarn_nomatch, inline]).
+-define(FILEPATH, "project/test/my/mod.gleam").
+-export([main/0]).
+-export_type([fn_box/0]).
+
+-type fn_box() :: {fn_box, fun((integer()) -> integer())}.
+
+-file("project/test/my/mod.gleam", 6).
+-spec main() -> integer().
+main() ->
+    B = {fn_box, fun(X) -> X end},
+    (erlang:element(2, B))(5).

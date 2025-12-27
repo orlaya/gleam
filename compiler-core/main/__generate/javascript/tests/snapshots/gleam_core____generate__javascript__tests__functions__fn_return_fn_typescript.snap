@@ -1,0 +1,15 @@
+---
+source: compiler-core/src_refactored/__generate/javascript/tests/functions.rs
+assertion_line: 313
+expression: "pub fn main(f: fn(Int) -> Int) {\n  let func = fn(x, y) { f(x) + f(y) }\n  func\n}\n"
+snapshot_kind: text
+---
+----- SOURCE CODE
+pub fn main(f: fn(Int) -> Int) {
+  let func = fn(x, y) { f(x) + f(y) }
+  func
+}
+
+
+----- TYPESCRIPT DEFINITIONS
+export function main(f: (x0: number) => number): (x0: number, x1: number) => number;

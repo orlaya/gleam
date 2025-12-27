@@ -1,0 +1,21 @@
+---
+source: compiler-core/src_refactored/__core/type_/tests/errors.rs
+assertion_line: 3075
+expression: "\npub fn main() {\n  !!{ True || a }\n}\n"
+snapshot_kind: text
+---
+----- SOURCE CODE
+
+pub fn main() {
+  !!{ True || a }
+}
+
+
+----- ERROR
+error: Unknown variable
+  ┌─ /src/one/two.gleam:3:15
+  │
+3 │   !!{ True || a }
+  │               ^
+
+The name `a` is not in scope here.

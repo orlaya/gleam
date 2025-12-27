@@ -1,0 +1,22 @@
+---
+source: compiler-core/src_refactored/__generate/javascript/tests/custom_types.rs
+assertion_line: 314
+expression: "import other\npub fn main() {\n  other.Two(1)\n}"
+snapshot_kind: text
+---
+----- SOURCE CODE
+-- other.gleam
+pub type One { Two(Int) }
+
+-- main.gleam
+import other
+pub fn main() {
+  other.Two(1)
+}
+
+----- COMPILED JAVASCRIPT
+import * as $other from "../other.mjs";
+
+export function main() {
+  return new $other.Two(1);
+}

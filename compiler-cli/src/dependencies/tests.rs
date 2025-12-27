@@ -7,7 +7,7 @@ use pretty_assertions::assert_eq;
 
 use gleam_core::{
     Error,
-    build::Runtime,
+    compiler::Runtime,
     config::{DenoConfig, DenoFlag, Docs, ErlangConfig, JavaScriptConfig},
     manifest::{Base16Checksum, Manifest, ManifestPackage, ManifestPackageSource},
     requirement::Requirement,

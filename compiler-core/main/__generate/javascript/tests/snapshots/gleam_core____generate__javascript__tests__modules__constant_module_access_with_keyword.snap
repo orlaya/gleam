@@ -1,0 +1,20 @@
+---
+source: compiler-core/src_refactored/__generate/javascript/tests/modules.rs
+assertion_line: 204
+expression: "\nimport rocket_ship\npub const variable = rocket_ship.class\n"
+snapshot_kind: text
+---
+----- SOURCE CODE
+-- rocket_ship.gleam
+pub const class = 1
+
+-- main.gleam
+
+import rocket_ship
+pub const variable = rocket_ship.class
+
+
+----- COMPILED JAVASCRIPT
+import * as $rocket_ship from "../rocket_ship.mjs";
+
+export const variable = $rocket_ship.class$;

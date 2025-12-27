@@ -1,0 +1,22 @@
+---
+source: compiler-core/src_refactored/__core/type_/tests/warnings.rs
+assertion_line: 1894
+expression: "\n        pub fn wibble(_) { 1 }\n        pub fn main() {\n            1 |> panic |> wibble\n        }\n        "
+snapshot_kind: text
+---
+----- SOURCE CODE
+
+        pub fn wibble(_) { 1 }
+        pub fn main() {
+            1 |> panic |> wibble
+        }
+        
+
+----- WARNING
+warning: Unreachable code
+  ┌─ /src/warning/wrn.gleam:4:27
+  │
+4 │             1 |> panic |> wibble
+  │                           ^^^^^^
+
+This code is unreachable because it comes after a `panic`.

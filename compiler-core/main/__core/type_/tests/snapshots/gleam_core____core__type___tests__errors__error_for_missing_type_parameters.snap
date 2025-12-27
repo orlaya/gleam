@@ -1,0 +1,23 @@
+---
+source: compiler-core/src_refactored/__core/type_/tests/errors.rs
+assertion_line: 3108
+expression: "\ntype Wibble(a)\n\ntype Wobble {\n  Wobble(Wibble)\n}\n"
+snapshot_kind: text
+---
+----- SOURCE CODE
+
+type Wibble(a)
+
+type Wobble {
+  Wobble(Wibble)
+}
+
+
+----- ERROR
+error: Incorrect arity
+  ┌─ /src/one/two.gleam:5:10
+  │
+5 │   Wobble(Wibble)
+  │          ^^^^^^ Expected 1 type argument, got 0
+
+`Wibble` requires 1 type argument but none where provided.

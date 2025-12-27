@@ -1,0 +1,16 @@
+---
+source: compiler-core/src_refactored/__generate/javascript/tests/functions.rs
+assertion_line: 431
+expression: "pub fn main() {\n  fn(n) { n + 1 }(10)\n}\n"
+snapshot_kind: text
+---
+----- SOURCE CODE
+pub fn main() {
+  fn(n) { n + 1 }(10)
+}
+
+
+----- COMPILED JAVASCRIPT
+export function main() {
+  return 10 + 1;
+}

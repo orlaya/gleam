@@ -1,0 +1,35 @@
+---
+source: compiler-core/src_refactored/__parse/parse/tests.rs
+assertion_line: 517
+expression: "panic as echo \"string\""
+snapshot_kind: text
+---
+[
+    Expression(
+        Panic {
+            location: SrcSpan {
+                start: 0,
+                end: 22,
+            },
+            message: Some(
+                Echo {
+                    location: SrcSpan {
+                        start: 9,
+                        end: 22,
+                    },
+                    keyword_end: 13,
+                    expression: Some(
+                        String {
+                            location: SrcSpan {
+                                start: 14,
+                                end: 22,
+                            },
+                            value: "string",
+                        },
+                    ),
+                    message: None,
+                },
+            ),
+        },
+    ),
+]

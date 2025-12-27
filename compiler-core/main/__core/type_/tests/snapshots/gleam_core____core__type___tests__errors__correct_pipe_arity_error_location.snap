@@ -1,0 +1,16 @@
+---
+source: compiler-core/src_refactored/__core/type_/tests/errors.rs
+assertion_line: 1412
+expression: "fn x(x, y) { x }\nfn main() { 1 |> x() }"
+snapshot_kind: text
+---
+----- SOURCE CODE
+fn x(x, y) { x }
+fn main() { 1 |> x() }
+
+----- ERROR
+error: Incorrect arity
+  ┌─ /src/one/two.gleam:2:18
+  │
+2 │ fn main() { 1 |> x() }
+  │                  ^^^ Expected 2 arguments, got 1

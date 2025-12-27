@@ -1,0 +1,17 @@
+---
+source: compiler-core/src_refactored/__generate/javascript/tests/prelude.rs
+assertion_line: 5
+expression: "import gleam\npub fn go() { gleam.Ok(1) }\n"
+snapshot_kind: text
+---
+----- SOURCE CODE
+import gleam
+pub fn go() { gleam.Ok(1) }
+
+
+----- COMPILED JAVASCRIPT
+import * as $gleam from "../gleam.mjs";
+
+export function go() {
+  return new $gleam.Ok(1);
+}

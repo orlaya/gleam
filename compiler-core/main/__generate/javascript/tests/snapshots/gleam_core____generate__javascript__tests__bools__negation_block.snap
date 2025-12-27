@@ -1,0 +1,23 @@
+---
+source: compiler-core/src_refactored/__generate/javascript/tests/bools.rs
+assertion_line: 150
+expression: "pub fn negate(x) {\n  !{\n    123\n    x\n  }\n}"
+snapshot_kind: text
+---
+----- SOURCE CODE
+pub fn negate(x) {
+  !{
+    123
+    x
+  }
+}
+
+----- COMPILED JAVASCRIPT
+export function negate(x) {
+  let _block;
+  {
+    123;
+    _block = x;
+  }
+  return !_block;
+}

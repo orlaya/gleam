@@ -1,0 +1,48 @@
+---
+source: compiler-core/src_refactored/__generate/javascript/tests/functions.rs
+assertion_line: 56
+expression: "\npub fn add(x, y) {\nx + y\n}\n\npub fn long() {\n  add(1, add(1, add(1, add(1, add(1, add(1, add(1, add(1, add(1, add(1, add(1, add(1, add(1, add(1, add(1, 1)))))))))))))))\n}"
+snapshot_kind: text
+---
+----- SOURCE CODE
+
+pub fn add(x, y) {
+x + y
+}
+
+pub fn long() {
+  add(1, add(1, add(1, add(1, add(1, add(1, add(1, add(1, add(1, add(1, add(1, add(1, add(1, add(1, add(1, 1)))))))))))))))
+}
+
+----- COMPILED JAVASCRIPT
+export function add(x, y) {
+  return x + y;
+}
+
+export function long() {
+  return add(
+    1,
+    add(
+      1,
+      add(
+        1,
+        add(
+          1,
+          add(
+            1,
+            add(
+              1,
+              add(
+                1,
+                add(
+                  1,
+                  add(1, add(1, add(1, add(1, add(1, add(1, add(1, 1))))))),
+                ),
+              ),
+            ),
+          ),
+        ),
+      ),
+    ),
+  );
+}

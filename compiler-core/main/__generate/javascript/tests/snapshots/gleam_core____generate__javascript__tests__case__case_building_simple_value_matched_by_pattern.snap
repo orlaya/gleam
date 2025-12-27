@@ -1,0 +1,22 @@
+---
+source: compiler-core/src_refactored/__generate/javascript/tests/case.rs
+assertion_line: 449
+expression: "pub fn go(x) {\n   case x {\n     1 -> 2\n     n -> n\n   }\n}"
+snapshot_kind: text
+---
+----- SOURCE CODE
+pub fn go(x) {
+   case x {
+     1 -> 2
+     n -> n
+   }
+}
+
+----- COMPILED JAVASCRIPT
+export function go(x) {
+  if (x === 1) {
+    return 2;
+  } else {
+    return x;
+  }
+}

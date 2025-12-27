@@ -8,3 +8,13 @@ erl_crash.dump
 *.lock
 node_modules/
 compiler-cli/build/
+
+/_DOCS/
+/_RULES/
+
+**AGENTS.md
+
+**/*-----------*
+**/*===========*
+
+*\[x\]*

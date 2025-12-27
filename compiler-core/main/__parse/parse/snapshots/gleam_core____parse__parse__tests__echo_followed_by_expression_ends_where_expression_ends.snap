@@ -1,0 +1,27 @@
+---
+source: compiler-core/src_refactored/__parse/parse/tests.rs
+assertion_line: 461
+expression: echo wibble
+snapshot_kind: text
+---
+[
+    Expression(
+        Echo {
+            location: SrcSpan {
+                start: 0,
+                end: 11,
+            },
+            keyword_end: 4,
+            expression: Some(
+                Var {
+                    location: SrcSpan {
+                        start: 5,
+                        end: 11,
+                    },
+                    name: "wibble",
+                },
+            ),
+            message: None,
+        },
+    ),
+]

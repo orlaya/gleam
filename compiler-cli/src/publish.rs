@@ -5,7 +5,7 @@ use gleam_core::{
     Error, Result,
     analyse::TargetSupport,
     ast::{CallArg, Statement, TypedExpr, TypedFunction},
-    build::{Codegen, Compile, Mode, Options, Package, Target},
+    compiler::{Codegen, Compile, Mode, Options, Package, Target},
     config::{GleamVersion, PackageConfig, SpdxLicense},
     docs::{Dependency, DependencyKind, DocContext},
     error::{SmallVersion, wrap},

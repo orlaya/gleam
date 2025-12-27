@@ -2,7 +2,7 @@ use std::{io::Read, process::Stdio};
 
 use camino::{Utf8Path, Utf8PathBuf};
 use gleam_core::{
-    build::{Runtime, Target},
+    compiler::{Runtime, Target},
     io::Command,
     paths::ProjectPaths,
 };

@@ -1,0 +1,17 @@
+---
+source: compiler-core/src_refactored/__core/type_/tests/errors.rs
+assertion_line: 1699
+expression: "type A { A(_) }"
+snapshot_kind: text
+---
+----- SOURCE CODE
+type A { A(_) }
+
+----- ERROR
+error: Unexpected type hole
+  ┌─ /src/one/two.gleam:1:12
+  │
+1 │ type A { A(_) }
+  │            ^ I need to know what this is
+
+We need to know the exact type here so type holes cannot be used.

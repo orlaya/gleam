@@ -1,0 +1,11 @@
+---
+source: compiler-core/src_refactored/__generate/javascript/tests/externals.rs
+assertion_line: 5
+expression: pub type Thing
+snapshot_kind: text
+---
+----- SOURCE CODE
+pub type Thing
+
+----- COMPILED JAVASCRIPT
+export {}

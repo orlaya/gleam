@@ -1,0 +1,21 @@
+---
+source: compiler-core/src_refactored/__generate/javascript/tests/modules.rs
+assertion_line: 59
+expression: "\nimport rocket_ship.{ x as y }\npub const z = y\n"
+snapshot_kind: text
+---
+----- SOURCE CODE
+-- rocket_ship.gleam
+pub const x = 1
+
+-- main.gleam
+
+import rocket_ship.{ x as y }
+pub const z = y
+
+
+----- COMPILED JAVASCRIPT
+import * as $rocket_ship from "../rocket_ship.mjs";
+import { x as y } from "../rocket_ship.mjs";
+
+export const z = y;

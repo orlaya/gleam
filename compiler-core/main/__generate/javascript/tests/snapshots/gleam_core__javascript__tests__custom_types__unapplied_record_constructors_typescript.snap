@@ -1,0 +1,31 @@
+---
+source: compiler-core/src/javascript/tests/custom_types.rs
+assertion_line: 555
+expression: "pub type Cat { Cat(name: String) }\n\npub fn return_unapplied_cat() {\n  Cat\n}\n"
+snapshot_kind: text
+---
+----- SOURCE CODE
+pub type Cat { Cat(name: String) }
+
+pub fn return_unapplied_cat() {
+  Cat
+}
+
+
+----- TYPESCRIPT DEFINITIONS
+import type * as _ from "../gleam.d.mts";
+
+export class Cat extends _.CustomType {
+  /** @deprecated */
+  constructor(name: string);
+  /** @deprecated */
+  name: string;
+}
+export function Cat$Cat(name: string): Cat$;
+export function Cat$isCat(value: Cat$): boolean;
+export function Cat$Cat$0(value: Cat$): string;
+export function Cat$Cat$name(value: Cat$): string;
+
+export type Cat$ = Cat;
+
+export function return_unapplied_cat(): (x0: string) => Cat$;

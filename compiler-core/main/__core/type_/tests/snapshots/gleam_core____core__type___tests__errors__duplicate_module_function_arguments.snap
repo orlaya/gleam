@@ -1,0 +1,21 @@
+---
+source: compiler-core/src_refactored/__core/type_/tests/errors.rs
+assertion_line: 2092
+expression: "\npub fn main(x, x) {\n  Nil\n}\n"
+snapshot_kind: text
+---
+----- SOURCE CODE
+
+pub fn main(x, x) {
+  Nil
+}
+
+
+----- ERROR
+error: Argument name already used
+  ┌─ /src/one/two.gleam:2:16
+  │
+2 │ pub fn main(x, x) {
+  │                ^
+
+Two `x` arguments have been defined for this function.

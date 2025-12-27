@@ -1,0 +1,18 @@
+---
+source: compiler-core/src_refactored/__generate/javascript/tests/externals.rs
+assertion_line: 129
+expression: "\npub type TESTitem\n\n@external(javascript, \"it\", \"one\")\npub fn one(a: TESTitem) -> TESTitem\n"
+snapshot_kind: text
+---
+----- SOURCE CODE
+
+pub type TESTitem
+
+@external(javascript, "it", "one")
+pub fn one(a: TESTitem) -> TESTitem
+
+
+----- TYPESCRIPT DEFINITIONS
+export type TESTitem$ = any;
+
+export function one(a: TESTitem$): TESTitem$;

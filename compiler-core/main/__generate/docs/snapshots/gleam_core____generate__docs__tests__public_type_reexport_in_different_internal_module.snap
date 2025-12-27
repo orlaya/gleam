@@ -1,0 +1,23 @@
+---
+source: compiler-core/src_refactored/__generate/docs/tests.rs
+assertion_line: 1096
+expression: output
+snapshot_kind: text
+---
+---- SOURCE CODE
+-- thepackage/internal/other.gleam
+pub type Internal
+
+-- main.gleam
+
+import thepackage/internal/other
+
+pub type External =
+  other.Internal
+
+
+---- TYPES
+
+--- External
+<pre><code>pub type External =
+  @internal Internal</code></pre>

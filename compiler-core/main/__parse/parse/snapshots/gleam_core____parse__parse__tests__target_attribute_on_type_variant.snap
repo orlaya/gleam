@@ -1,0 +1,22 @@
+---
+source: compiler-core/src_refactored/__parse/parse/tests.rs
+assertion_line: 1820
+expression: "\ntype Wibble {\n    @target(erlang)\n    Wibble2\n}\n"
+snapshot_kind: text
+---
+----- SOURCE CODE
+
+type Wibble {
+    @target(erlang)
+    Wibble2
+}
+
+
+----- ERROR
+error: Syntax error
+  ┌─ /src/parse/error.gleam:3:5
+  │
+3 │     @target(erlang)
+  │     ^^^^^^^^^^^^^^^ This attribute cannot be used on a variant.
+
+Hint: Did you mean `@deprecated`?

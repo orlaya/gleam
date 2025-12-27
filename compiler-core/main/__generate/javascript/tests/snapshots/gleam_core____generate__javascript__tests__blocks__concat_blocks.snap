@@ -1,0 +1,29 @@
+---
+source: compiler-core/src_refactored/__generate/javascript/tests/blocks.rs
+assertion_line: 155
+expression: "\npub fn main(f, a, b) {\n  {\n    a\n    |> f\n  } <> {\n    b\n    |> f\n  }\n}\n"
+snapshot_kind: text
+---
+----- SOURCE CODE
+
+pub fn main(f, a, b) {
+  {
+    a
+    |> f
+  } <> {
+    b
+    |> f
+  }
+}
+
+
+----- COMPILED JAVASCRIPT
+export function main(f, a, b) {
+  return (() => {
+    let _pipe = a;
+    return f(_pipe);
+  })() + (() => {
+    let _pipe = b;
+    return f(_pipe);
+  })();
+}

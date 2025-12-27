@@ -1,0 +1,17 @@
+---
+source: compiler-core/src_refactored/__core/type_/tests/errors.rs
+assertion_line: 256
+expression: "let add = fn(x, y) { x + y } 1 |> add(unknown)"
+snapshot_kind: text
+---
+----- SOURCE CODE
+let add = fn(x, y) { x + y } 1 |> add(unknown)
+
+----- ERROR
+error: Unknown variable
+  ┌─ /src/one/two.gleam:1:39
+  │
+1 │ let add = fn(x, y) { x + y } 1 |> add(unknown)
+  │                                       ^^^^^^^
+
+The name `unknown` is not in scope here.

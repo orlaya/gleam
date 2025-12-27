@@ -1,0 +1,27 @@
+---
+source: compiler-core/src_refactored/__core/type_/tests/warnings.rs
+assertion_line: 4549
+expression: "\npub fn wibble(bits) {\n  case bits {\n    <<0b1:1, _:1>> -> 1\n    <<0b11:2>> -> 2\n    _ -> 3\n  }\n}"
+snapshot_kind: text
+---
+----- SOURCE CODE
+
+pub fn wibble(bits) {
+  case bits {
+    <<0b1:1, _:1>> -> 1
+    <<0b11:2>> -> 2
+    _ -> 3
+  }
+}
+
+----- WARNING
+warning: Unreachable pattern
+  ┌─ /src/warning/wrn.gleam:5:5
+  │
+5 │     <<0b11:2>> -> 2
+  │     ^^^^^^^^^^
+
+This pattern cannot be reached as a previous pattern matches the same
+values.
+
+Hint: It can be safely removed.

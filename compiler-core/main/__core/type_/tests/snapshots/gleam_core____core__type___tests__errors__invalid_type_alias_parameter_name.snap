@@ -1,0 +1,19 @@
+---
+source: compiler-core/src_refactored/__core/type_/tests/errors.rs
+assertion_line: 1401
+expression: "type GleamOption(okType) = Result(okType, Nil)"
+snapshot_kind: text
+---
+----- SOURCE CODE
+type GleamOption(okType) = Result(okType, Nil)
+
+----- ERROR
+error: Invalid type variable name
+  ┌─ /src/one/two.gleam:1:18
+  │
+1 │ type GleamOption(okType) = Result(okType, Nil)
+  │                  ^^^^^^ This is not a valid type variable name
+
+Hint: Type variable names start with a lowercase letter and contain a-z,
+0-9, or _.
+Try: ok_type

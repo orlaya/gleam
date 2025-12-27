@@ -1,0 +1,19 @@
+---
+source: compiler-core/src_refactored/__generate/javascript/tests/bit_arrays.rs
+assertion_line: 2500
+expression: "\npub fn go(x) {\n  <<x:bits-size(4)-unit(8)>>\n}\n"
+snapshot_kind: text
+---
+----- SOURCE CODE
+
+pub fn go(x) {
+  <<x:bits-size(4)-unit(8)>>
+}
+
+
+----- COMPILED JAVASCRIPT
+import { toBitArray, bitArraySlice } from "../gleam.mjs";
+
+export function go(x) {
+  return toBitArray([bitArraySlice(x, 0, 32)]);
+}

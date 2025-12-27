@@ -1,0 +1,26 @@
+---
+source: compiler-core/src_refactored/__parse/parse/tests.rs
+assertion_line: 1876
+expression: case a
+snapshot_kind: text
+---
+[
+    Expression(
+        Case {
+            location: SrcSpan {
+                start: 0,
+                end: 6,
+            },
+            subjects: [
+                Var {
+                    location: SrcSpan {
+                        start: 5,
+                        end: 6,
+                    },
+                    name: "a",
+                },
+            ],
+            clauses: None,
+        },
+    ),
+]

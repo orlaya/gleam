@@ -1,0 +1,27 @@
+---
+source: compiler-core/src_refactored/__generate/javascript/tests/blocks.rs
+assertion_line: 5
+expression: "\npub fn go() {\n  let x = {\n    1\n    2\n  }\n  x\n}\n"
+snapshot_kind: text
+---
+----- SOURCE CODE
+
+pub fn go() {
+  let x = {
+    1
+    2
+  }
+  x
+}
+
+
+----- COMPILED JAVASCRIPT
+export function go() {
+  let _block;
+  {
+    1;
+    _block = 2;
+  }
+  let x = _block;
+  return x;
+}

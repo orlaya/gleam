@@ -1,0 +1,26 @@
+---
+source: compiler-core/src_refactored/__generate/javascript/tests/case.rs
+assertion_line: 109
+expression: "\npub fn go(x, y) {\n  case x, y {\n    True, _ | _, True -> 1\n    _, _ -> 0\n  }\n}\n"
+snapshot_kind: text
+---
+----- SOURCE CODE
+
+pub fn go(x, y) {
+  case x, y {
+    True, _ | _, True -> 1
+    _, _ -> 0
+  }
+}
+
+
+----- COMPILED JAVASCRIPT
+export function go(x, y) {
+  if (x) {
+    return 1;
+  } else if (y) {
+    return 1;
+  } else {
+    return 0;
+  }
+}

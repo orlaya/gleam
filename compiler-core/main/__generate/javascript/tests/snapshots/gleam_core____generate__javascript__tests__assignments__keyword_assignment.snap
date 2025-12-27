@@ -1,0 +1,20 @@
+---
+source: compiler-core/src_refactored/__generate/javascript/tests/assignments.rs
+assertion_line: 208
+expression: "\npub fn main() {\n  let class = 10\n  let debugger = 50\n}\n"
+snapshot_kind: text
+---
+----- SOURCE CODE
+
+pub fn main() {
+  let class = 10
+  let debugger = 50
+}
+
+
+----- COMPILED JAVASCRIPT
+export function main() {
+  let class$ = 10;
+  let debugger$ = 50;
+  return debugger$;
+}

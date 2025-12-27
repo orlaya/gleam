@@ -1,0 +1,20 @@
+---
+source: compiler-core/src_refactored/__generate/javascript/tests/assignments.rs
+assertion_line: 129
+expression: "pub fn main(x) {\n  let #(x) = #(x)\n  x\n}\n"
+snapshot_kind: text
+---
+----- SOURCE CODE
+pub fn main(x) {
+  let #(x) = #(x)
+  x
+}
+
+
+----- COMPILED JAVASCRIPT
+export function main(x) {
+  let $ = [x];
+  let x$1;
+  x$1 = $[0];
+  return x$1;
+}

@@ -1,5 +1,5 @@
 use gleam_core::{
-    build::Telemetry,
+    compiler::Telemetry,
     error::{Error, StandardIoAction},
     manifest::{Changed, ChangedGit, PackageChanges},
 };

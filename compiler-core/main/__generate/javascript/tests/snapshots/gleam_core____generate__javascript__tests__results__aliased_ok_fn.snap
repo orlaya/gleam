@@ -1,0 +1,17 @@
+---
+source: compiler-core/src_refactored/__generate/javascript/tests/results.rs
+assertion_line: 73
+expression: "import gleam.{Ok as Thing}\npub fn main() { Thing }"
+snapshot_kind: text
+---
+----- SOURCE CODE
+import gleam.{Ok as Thing}
+pub fn main() { Thing }
+
+----- COMPILED JAVASCRIPT
+import * as $gleam from "../gleam.mjs";
+import { Ok as Thing } from "../gleam.mjs";
+
+export function main() {
+  return (var0) => { return new Thing(var0); };
+}

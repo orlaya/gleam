@@ -1,0 +1,20 @@
+---
+source: compiler-core/src_refactored/__generate/javascript/tests/modules.rs
+assertion_line: 118
+expression: "import one/two\npub fn go() { two.go() }"
+snapshot_kind: text
+---
+----- SOURCE CODE
+-- one/two.gleam
+pub fn go() { 1 }
+
+-- main.gleam
+import one/two
+pub fn go() { two.go() }
+
+----- COMPILED JAVASCRIPT
+import * as $two from "../one/two.mjs";
+
+export function go() {
+  return $two.go();
+}

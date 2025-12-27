@@ -1,0 +1,46 @@
+---
+source: compiler-core/src/javascript/tests/case.rs
+expression: "\npub fn main() {\n  case Ok([\"b c\", \"d\"]) {\n    Ok([\"b \" <> _, \"d\"]) -> 1\n    _ -> 1\n  }\n}\n"
+---
+----- SOURCE CODE
+
+pub fn main() {
+  case Ok(["b c", "d"]) {
+    Ok(["b " <> _, "d"]) -> 1
+    _ -> 1
+  }
+}
+
+
+----- COMPILED JAVASCRIPT
+import { Ok, toList, Empty as $Empty } from "../gleam.mjs";
+
+export function main() {
+  let $ = new Ok(toList(["b c", "d"]));
+  let $1 = $[0];
+  if ($1 instanceof $Empty) {
+    return 1;
+  } else {
+    let $2 = $1.tail;
+    if ($2 instanceof $Empty) {
+      return 1;
+    } else {
+      let $3 = $2.tail;
+      if ($3 instanceof $Empty) {
+        let $4 = $1.head;
+        if ($4.startsWith("b ")) {
+          let $5 = $2.head;
+          if ($5 === "d") {
+            return 1;
+          } else {
+            return 1;
+          }
+        } else {
+          return 1;
+        }
+      } else {
+        return 1;
+      }
+    }
+  }
+}

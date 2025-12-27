@@ -1,0 +1,25 @@
+---
+source: compiler-core/src_refactored/__core/type_/tests/imports.rs
+assertion_line: 79
+expression: "import one\n\npub fn main() {\n  one.X\n}"
+snapshot_kind: text
+---
+----- SOURCE CODE
+-- one.gleam
+type X = Int
+
+-- main.gleam
+import one
+
+pub fn main() {
+  one.X
+}
+
+----- ERROR
+error: Unknown module value
+  ┌─ /src/one/two.gleam:4:7
+  │
+4 │   one.X
+  │       ^
+
+The module `one` does not have a `X` value.

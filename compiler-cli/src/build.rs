@@ -2,7 +2,7 @@ use std::{rc::Rc, time::Instant};
 
 use gleam_core::{
     Result,
-    build::{Built, Codegen, NullTelemetry, Options, ProjectCompiler, Telemetry},
+    compiler::{Built, Codegen, NullTelemetry, Options, ProjectCompiler, Telemetry},
     manifest::Manifest,
     paths::ProjectPaths,
     warning::WarningEmitterIO,

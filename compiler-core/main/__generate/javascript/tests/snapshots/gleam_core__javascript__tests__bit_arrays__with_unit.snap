@@ -1,0 +1,19 @@
+---
+source: compiler-core/src/javascript/tests/bit_arrays.rs
+assertion_line: 1770
+expression: "\npub fn main() {\n  <<1:size(2)-unit(2), 2:size(3)-unit(4)>>\n}\n"
+snapshot_kind: text
+---
+----- SOURCE CODE
+
+pub fn main() {
+  <<1:size(2)-unit(2), 2:size(3)-unit(4)>>
+}
+
+
+----- COMPILED JAVASCRIPT
+import { toBitArray, sizedInt } from "../gleam.mjs";
+
+export function main() {
+  return toBitArray([sizedInt(1, 4, true), sizedInt(2, 12, true)]);
+}

@@ -1,0 +1,18 @@
+---
+source: compiler-core/src_refactored/__generate/javascript/tests/bit_arrays.rs
+assertion_line: 1747
+expression: "\npub fn main() {\n  <<\"hello\", \" \", \"world\">>\n}"
+snapshot_kind: text
+---
+----- SOURCE CODE
+
+pub fn main() {
+  <<"hello", " ", "world">>
+}
+
+----- COMPILED JAVASCRIPT
+import { toBitArray, stringBits } from "../gleam.mjs";
+
+export function main() {
+  return toBitArray([stringBits("hello"), stringBits(" "), stringBits("world")]);
+}

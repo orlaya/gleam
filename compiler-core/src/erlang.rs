@@ -280,7 +280,7 @@ fn module_document<'a>(
     let module = if echo_used {
         module
             .append(lines(2))
-            .append(std::include_str!("../templates/echo.erl").to_doc())
+            .append(std::include_str!("../__templates/echo.erl").to_doc())
     } else {
         module
     };

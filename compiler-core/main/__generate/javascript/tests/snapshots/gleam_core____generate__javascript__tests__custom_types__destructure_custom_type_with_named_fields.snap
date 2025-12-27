@@ -1,0 +1,64 @@
+---
+source: compiler-core/src_refactored/__generate/javascript/tests/custom_types.rs
+assertion_line: 262
+expression: "\npub type Cat {\n  Cat(name: String, cuteness: Int)\n}\n\npub fn go(cat) {\n  let Cat(x, y) = cat\n  let Cat(name: x, ..) = cat\n  let assert Cat(cuteness: 4, name: x) = cat\n  x\n}\n\n"
+snapshot_kind: text
+---
+----- SOURCE CODE
+
+pub type Cat {
+  Cat(name: String, cuteness: Int)
+}
+
+pub fn go(cat) {
+  let Cat(x, y) = cat
+  let Cat(name: x, ..) = cat
+  let assert Cat(cuteness: 4, name: x) = cat
+  x
+}
+
+
+
+----- COMPILED JAVASCRIPT
+import { CustomType as $CustomType, makeError } from "../gleam.mjs";
+
+const FILEPATH = "src/module.gleam";
+
+export class Cat extends $CustomType {
+  constructor(name, cuteness) {
+    super();
+    this.name = name;
+    this.cuteness = cuteness;
+  }
+}
+export const Cat$Cat = (name, cuteness) => new Cat(name, cuteness);
+export const Cat$isCat = (value) => value instanceof Cat;
+export const Cat$Cat$name = (value) => value.name;
+export const Cat$Cat$0 = (value) => value.name;
+export const Cat$Cat$cuteness = (value) => value.cuteness;
+export const Cat$Cat$1 = (value) => value.cuteness;
+
+export function go(cat) {
+  let x;
+  let y;
+  x = cat.name;
+  y = cat.cuteness;
+  let x$1;
+  x$1 = cat.name;
+  let x$2;
+  let $ = cat.cuteness;
+  if ($ === 4) {
+    x$2 = cat.name;
+  } else {
+    throw makeError(
+      "let_assert",
+      FILEPATH,
+      "my/mod",
+      9,
+      "go",
+      "Pattern match failed, no pattern matched the value.",
+      { value: cat, start: 124, end: 166, pattern_start: 135, pattern_end: 160 }
+    )
+  }
+  return x$2;
+}

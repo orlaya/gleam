@@ -1,0 +1,95 @@
+---
+source: compiler-core/src/javascript/tests/custom_types.rs
+expression: "\npub type Cat {\n  Cat(name: String, cuteness: Int)\n}\n\npub type Box {\n  Box(occupant: Cat)\n}\n\npub const felix = Cat(\"Felix\", 12)\npub const tom = Cat(cuteness: 1, name: \"Tom\")\n\npub fn go() {\n  Cat(\"Nubi\", 1)\n  Cat(2, name: \"Nubi\")\n  Cat(cuteness: 3, name: \"Nubi\")\n}\n\npub fn update(cat) {\n  Cat(..cat, name: \"Sid\")\n  Cat(..cat, name: \"Bartholemew Wonder Puss the Fourth !!!!!!!!!!!!!!!!\")\n  Cat(..new_cat(), name: \"Molly\")\n  let box = Box(occupant: cat)\n  Cat(..box.occupant, cuteness: box.occupant.cuteness + 1)\n}\n\npub fn access(cat: Cat) {\n  cat.cuteness\n}\n\npub fn new_cat() {\n  Cat(name: \"Beau\", cuteness: 11)\n}\n"
+---
+----- SOURCE CODE
+
+pub type Cat {
+  Cat(name: String, cuteness: Int)
+}
+
+pub type Box {
+  Box(occupant: Cat)
+}
+
+pub const felix = Cat("Felix", 12)
+pub const tom = Cat(cuteness: 1, name: "Tom")
+
+pub fn go() {
+  Cat("Nubi", 1)
+  Cat(2, name: "Nubi")
+  Cat(cuteness: 3, name: "Nubi")
+}
+
+pub fn update(cat) {
+  Cat(..cat, name: "Sid")
+  Cat(..cat, name: "Bartholemew Wonder Puss the Fourth !!!!!!!!!!!!!!!!")
+  Cat(..new_cat(), name: "Molly")
+  let box = Box(occupant: cat)
+  Cat(..box.occupant, cuteness: box.occupant.cuteness + 1)
+}
+
+pub fn access(cat: Cat) {
+  cat.cuteness
+}
+
+pub fn new_cat() {
+  Cat(name: "Beau", cuteness: 11)
+}
+
+
+----- COMPILED JAVASCRIPT
+import { CustomType as $CustomType } from "../gleam.mjs";
+
+export class Cat extends $CustomType {
+  constructor(name, cuteness) {
+    super();
+    this.name = name;
+    this.cuteness = cuteness;
+  }
+}
+export const Cat$Cat = (name, cuteness) => new Cat(name, cuteness);
+export const Cat$isCat = (value) => value instanceof Cat;
+export const Cat$Cat$name = (value) => value.name;
+export const Cat$Cat$0 = (value) => value.name;
+export const Cat$Cat$cuteness = (value) => value.cuteness;
+export const Cat$Cat$1 = (value) => value.cuteness;
+
+export class Box extends $CustomType {
+  constructor(occupant) {
+    super();
+    this.occupant = occupant;
+  }
+}
+export const Box$Box = (occupant) => new Box(occupant);
+export const Box$isBox = (value) => value instanceof Box;
+export const Box$Box$occupant = (value) => value.occupant;
+export const Box$Box$0 = (value) => value.occupant;
+
+export const felix = /* @__PURE__ */ new Cat("Felix", 12);
+
+export const tom = /* @__PURE__ */ new Cat("Tom", 1);
+
+export function go() {
+  new Cat("Nubi", 1);
+  new Cat("Nubi", 2);
+  return new Cat("Nubi", 3);
+}
+
+export function access(cat) {
+  return cat.cuteness;
+}
+
+export function new_cat() {
+  return new Cat("Beau", 11);
+}
+
+export function update(cat) {
+  new Cat("Sid", cat.cuteness)
+  new Cat("Bartholemew Wonder Puss the Fourth !!!!!!!!!!!!!!!!", cat.cuteness)
+  let _record = new_cat();
+  new Cat("Molly", _record.cuteness)
+  let box = new Box(cat);
+  let _record$1 = box.occupant;
+  return new Cat(_record$1.name, box.occupant.cuteness + 1);
+}

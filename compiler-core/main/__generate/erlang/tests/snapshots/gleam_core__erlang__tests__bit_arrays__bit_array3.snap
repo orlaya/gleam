@@ -1,0 +1,38 @@
+---
+source: compiler-core/src/erlang/tests/bit_arrays.rs
+expression: "pub fn main() {\n  let a = <<\"test\":utf8>>\n  let assert <<b:utf8_codepoint, \"st\":utf8>> = a\n  b\n}\n"
+---
+----- SOURCE CODE
+pub fn main() {
+  let a = <<"test":utf8>>
+  let assert <<b:utf8_codepoint, "st":utf8>> = a
+  b
+}
+
+
+----- COMPILED ERLANG
+-module(my@mod).
+-compile([no_auto_import, nowarn_unused_vars, nowarn_unused_function, nowarn_nomatch, inline]).
+-define(FILEPATH, "project/test/my/mod.gleam").
+-export([main/0]).
+
+-file("project/test/my/mod.gleam", 1).
+-spec main() -> integer().
+main() ->
+    A = <<"test"/utf8>>,
+    B@1 = case A of
+        <<B/utf8, "st"/utf8>> -> B;
+        _assert_fail ->
+            erlang:error(#{gleam_error => let_assert,
+                        message => <<"Pattern match failed, no pattern matched the value."/utf8>>,
+                        file => <<?FILEPATH/utf8>>,
+                        module => <<"my/mod"/utf8>>,
+                        function => <<"main"/utf8>>,
+                        line => 3,
+                        value => _assert_fail,
+                        start => 44,
+                        'end' => 90,
+                        pattern_start => 55,
+                        pattern_end => 86})
+    end,
+    B@1.

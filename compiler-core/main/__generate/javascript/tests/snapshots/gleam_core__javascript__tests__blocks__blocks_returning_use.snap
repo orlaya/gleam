@@ -1,0 +1,25 @@
+---
+source: compiler-core/src/javascript/tests/blocks.rs
+expression: "\npub fn b() {\n  {\n    use a <- fn(cb) { cb(1) }\n    a\n  }\n  {\n    use b <- fn(cb) { cb(2) }\n    b\n  }\n  3\n}\n    "
+---
+----- SOURCE CODE
+
+pub fn b() {
+  {
+    use a <- fn(cb) { cb(1) }
+    a
+  }
+  {
+    use b <- fn(cb) { cb(2) }
+    b
+  }
+  3
+}
+    
+
+----- COMPILED JAVASCRIPT
+export function b() {
+  1;
+  2;
+  return 3;
+}

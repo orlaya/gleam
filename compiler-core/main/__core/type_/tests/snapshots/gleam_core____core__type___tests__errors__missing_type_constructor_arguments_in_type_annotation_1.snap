@@ -1,0 +1,17 @@
+---
+source: compiler-core/src_refactored/__core/type_/tests/errors.rs
+assertion_line: 3319
+expression: "pub fn main() -> Result() {}"
+snapshot_kind: text
+---
+----- SOURCE CODE
+pub fn main() -> Result() {}
+
+----- ERROR
+error: Incorrect arity
+  ┌─ /src/one/two.gleam:1:18
+  │
+1 │ pub fn main() -> Result() {}
+  │                  ^^^^^^^^ Expected 2 type arguments, got 0
+
+`Result` requires 2 type arguments but none where provided.

@@ -1,0 +1,24 @@
+---
+source: compiler-core/src_refactored/__generate/javascript/tests/strings.rs
+assertion_line: 156
+expression: "\npub fn go(x) {\n  case x {\n    \"Hello, \" <> _ -> Nil\n    _ -> Nil\n  }\n}\n"
+snapshot_kind: text
+---
+----- SOURCE CODE
+
+pub fn go(x) {
+  case x {
+    "Hello, " <> _ -> Nil
+    _ -> Nil
+  }
+}
+
+
+----- COMPILED JAVASCRIPT
+export function go(x) {
+  if (x.startsWith("Hello, ")) {
+    return undefined;
+  } else {
+    return undefined;
+  }
+}

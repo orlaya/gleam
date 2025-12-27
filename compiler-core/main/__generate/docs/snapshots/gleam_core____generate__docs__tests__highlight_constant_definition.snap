@@ -1,0 +1,16 @@
+---
+source: compiler-core/src_refactored/__generate/docs/tests.rs
+assertion_line: 802
+expression: output
+snapshot_kind: text
+---
+---- SOURCE CODE
+-- main.gleam
+
+pub const x = 22
+
+
+---- VALUES
+
+--- x
+<pre><code><span class="hljs-keyword">pub const </span><span class="hljs-title">x</span>: <span class="hljs-title">Int</span></code></pre>

@@ -4,7 +4,7 @@ use crate::{
 };
 use gleam_core::{
     Result,
-    build::{Mode, NullTelemetry, Target},
+    compiler::{Mode, NullTelemetry, Target},
     language_server::{LanguageServer, LockGuard, Locker},
     paths::ProjectPaths,
 };

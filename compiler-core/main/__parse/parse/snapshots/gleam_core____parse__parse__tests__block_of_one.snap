@@ -1,0 +1,28 @@
+---
+source: compiler-core/src_refactored/__parse/parse/tests.rs
+assertion_line: 657
+expression: "{ 1 }"
+snapshot_kind: text
+---
+[
+    Expression(
+        Block {
+            location: SrcSpan {
+                start: 0,
+                end: 5,
+            },
+            statements: [
+                Expression(
+                    Int {
+                        location: SrcSpan {
+                            start: 2,
+                            end: 3,
+                        },
+                        value: "1",
+                        int_value: 1,
+                    },
+                ),
+            ],
+        },
+    ),
+]

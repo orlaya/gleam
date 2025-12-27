@@ -1,0 +1,34 @@
+---
+source: compiler-core/src_refactored/__generate/erlang/tests.rs
+assertion_line: 860
+expression: "\npub fn function() {\n    1\n}\n\npub const module_info = function\n\npub fn main() {\n    module_info()\n}\n"
+snapshot_kind: text
+---
+----- SOURCE CODE
+
+pub fn function() {
+    1
+}
+
+pub const module_info = function
+
+pub fn main() {
+    module_info()
+}
+
+
+----- COMPILED ERLANG
+-module(my@mod).
+-compile([no_auto_import, nowarn_unused_vars, nowarn_unused_function, nowarn_nomatch, inline]).
+-define(FILEPATH, "project/test/my/mod.gleam").
+-export([function/0, main/0]).
+
+-file("project/test/my/mod.gleam", 2).
+-spec function() -> integer().
+function() ->
+    1.
+
+-file("project/test/my/mod.gleam", 8).
+-spec main() -> integer().
+main() ->
+    function().

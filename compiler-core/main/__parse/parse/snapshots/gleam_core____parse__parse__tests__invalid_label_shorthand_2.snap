@@ -1,0 +1,22 @@
+---
+source: compiler-core/src_refactored/__parse/parse/tests.rs
+assertion_line: 1487
+expression: "\npub fn main() {\n  wibble(:,)\n}\n"
+snapshot_kind: text
+---
+----- SOURCE CODE
+
+pub fn main() {
+  wibble(:,)
+}
+
+
+----- ERROR
+error: Syntax error
+  ┌─ /src/parse/error.gleam:3:10
+  │
+3 │   wibble(:,)
+  │          ^ I was not expecting this
+
+Found `:`, expected one of: 
+- `)`

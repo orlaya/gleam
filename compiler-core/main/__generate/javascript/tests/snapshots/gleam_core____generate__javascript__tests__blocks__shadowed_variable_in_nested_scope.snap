@@ -1,0 +1,34 @@
+---
+source: compiler-core/src_refactored/__generate/javascript/tests/blocks.rs
+assertion_line: 265
+expression: "\npub fn main() {\n  {\n    let x = 1\n    let _ = {\n      let x = 2\n      x\n    }\n    x\n  }\n}\n"
+snapshot_kind: text
+---
+----- SOURCE CODE
+
+pub fn main() {
+  {
+    let x = 1
+    let _ = {
+      let x = 2
+      x
+    }
+    x
+  }
+}
+
+
+----- COMPILED JAVASCRIPT
+export function main() {
+  {
+    let x = 1;
+    let _block;
+    {
+      let x$1 = 2;
+      _block = x$1;
+    }
+    let $ = _block;
+    
+    return x;
+  }
+}

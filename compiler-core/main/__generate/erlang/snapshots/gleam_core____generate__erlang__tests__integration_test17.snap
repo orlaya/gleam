@@ -1,0 +1,25 @@
+---
+source: compiler-core/src_refactored/__generate/erlang/tests.rs
+assertion_line: 352
+expression: "\npub type User { User(id: Int, name: String, age: Int) }\npub fn create_user(user_id) { User(age: 22, id: user_id, name: \"\") }\n"
+snapshot_kind: text
+---
+----- SOURCE CODE
+
+pub type User { User(id: Int, name: String, age: Int) }
+pub fn create_user(user_id) { User(age: 22, id: user_id, name: "") }
+
+
+----- COMPILED ERLANG
+-module(my@mod).
+-compile([no_auto_import, nowarn_unused_vars, nowarn_unused_function, nowarn_nomatch, inline]).
+-define(FILEPATH, "project/test/my/mod.gleam").
+-export([create_user/1]).
+-export_type([user/0]).
+
+-type user() :: {user, integer(), binary(), integer()}.
+
+-file("project/test/my/mod.gleam", 3).
+-spec create_user(integer()) -> user().
+create_user(User_id) ->
+    {user, User_id, <<""/utf8>>, 22}.

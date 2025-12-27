@@ -1,0 +1,20 @@
+---
+source: compiler-core/src_refactored/__core/type_/tests/errors.rs
+assertion_line: 3347
+expression: "pub fn main() {\n  let a: Int(Int, String) = todo\n}"
+snapshot_kind: text
+---
+----- SOURCE CODE
+pub fn main() {
+  let a: Int(Int, String) = todo
+}
+
+----- ERROR
+error: Type used as a type constructor
+  ┌─ /src/one/two.gleam:2:13
+  │
+2 │   let a: Int(Int, String) = todo
+  │             ^^^^^^^^^^^^^ You can remove this
+
+`Int` is a type with no parameters, but here it's being used as a type
+constructor.

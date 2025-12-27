@@ -1,0 +1,45 @@
+---
+source: compiler-core/src/javascript/tests/panic.rs
+assertion_line: 39
+expression: "\npub fn go(f) {\n  let boop = panic\n  f(panic)\n}\n"
+snapshot_kind: text
+---
+----- SOURCE CODE
+
+pub fn go(f) {
+  let boop = panic
+  f(panic)
+}
+
+
+----- COMPILED JAVASCRIPT
+import { makeError } from "../gleam.mjs";
+
+const FILEPATH = "src/module.gleam";
+
+export function go(f) {
+  let _block;
+  throw makeError(
+    "panic",
+    FILEPATH,
+    "my/mod",
+    3,
+    "go",
+    "`panic` expression evaluated.",
+    {}
+  )
+  let boop = _block;
+  return f(
+    (() => {
+      throw makeError(
+        "panic",
+        FILEPATH,
+        "my/mod",
+        4,
+        "go",
+        "`panic` expression evaluated.",
+        {}
+      )
+    })(),
+  );
+}

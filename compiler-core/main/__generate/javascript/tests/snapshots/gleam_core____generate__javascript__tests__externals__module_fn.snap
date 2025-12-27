@@ -1,0 +1,13 @@
+---
+source: compiler-core/src_refactored/__generate/javascript/tests/externals.rs
+assertion_line: 10
+expression: "\n@external(javascript, \"utils\", \"inspect\")\nfn show(x: anything) -> Nil"
+snapshot_kind: text
+---
+----- SOURCE CODE
+
+@external(javascript, "utils", "inspect")
+fn show(x: anything) -> Nil
+
+----- COMPILED JAVASCRIPT
+import { inspect as show } from "utils";

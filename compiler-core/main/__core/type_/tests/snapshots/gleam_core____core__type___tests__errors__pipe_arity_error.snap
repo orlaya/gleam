@@ -1,0 +1,32 @@
+---
+source: compiler-core/src_refactored/__core/type_/tests/errors.rs
+assertion_line: 1764
+expression: "\nfn go(x, y) {\n  x + y\n}\n\nfn main(x) {\n  1\n  |> go\n}\n"
+snapshot_kind: text
+---
+----- SOURCE CODE
+
+fn go(x, y) {
+  x + y
+}
+
+fn main(x) {
+  1
+  |> go
+}
+
+
+----- ERROR
+error: Type mismatch
+  ┌─ /src/one/two.gleam:8:6
+  │
+8 │   |> go
+  │      ^^
+
+Expected type:
+
+    fn(Int) -> a
+
+Found type:
+
+    fn(Int, Int) -> Int

@@ -1,0 +1,36 @@
+---
+source: compiler-core/src_refactored/__generate/javascript/tests/echo.rs
+assertion_line: 85
+expression: "\npub fn main() {\n  echo case 1 {\n    _ -> 2\n  }\n}\n"
+snapshot_kind: text
+---
+----- SOURCE CODE
+
+pub fn main() {
+  echo case 1 {
+    _ -> 2
+  }
+}
+
+
+----- COMPILED JAVASCRIPT
+import * as $stdlib$dict from "../../gleam_stdlib/gleam/dict.mjs";
+import {
+  Empty as $Empty,
+  NonEmpty as $NonEmpty,
+  CustomType as $CustomType,
+  bitArraySlice,
+  bitArraySliceToInt,
+  BitArray as $BitArray,
+  List as $List,
+  UtfCodepoint as $UtfCodepoint,
+} from "../gleam.mjs";
+
+export function main() {
+  let _block;
+  let $ = 1;
+  _block = 2;
+  return echo(_block, undefined, "src/module.gleam", 3);
+}
+
+// ...omitted code from `templates/echo.mjs`...

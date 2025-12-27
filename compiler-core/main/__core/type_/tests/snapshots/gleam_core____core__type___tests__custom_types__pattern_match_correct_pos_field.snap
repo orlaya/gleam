@@ -1,0 +1,45 @@
+---
+source: compiler-core/src_refactored/__core/type_/tests/custom_types.rs
+assertion_line: 207
+expression: "\ntype Fish {\n  Starfish()\n  Jellyfish(String, Bool)\n}\n\nfn handle_fish(fish: Fish) {\n  case fish {\n    Starfish() -> False\n    Jellyfish(jiggly) -> jiggly\n  }\n}\n"
+snapshot_kind: text
+---
+----- SOURCE CODE
+
+type Fish {
+  Starfish()
+  Jellyfish(String, Bool)
+}
+
+fn handle_fish(fish: Fish) {
+  case fish {
+    Starfish() -> False
+    Jellyfish(jiggly) -> jiggly
+  }
+}
+
+
+----- ERROR
+error: Incorrect arity
+   ┌─ /src/one/two.gleam:10:5
+   │
+10 │     Jellyfish(jiggly) -> jiggly
+   │     ^^^^^^^^^^^^^^^^^ Expected 2 arguments, got 1
+
+
+error: Type mismatch
+   ┌─ /src/one/two.gleam:10:5
+   │
+10 │     Jellyfish(jiggly) -> jiggly
+   │     ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+This case clause was found to return a different type than the previous
+one, but all case clauses must return the same type.
+
+Expected type:
+
+    Bool
+
+Found type:
+
+    String

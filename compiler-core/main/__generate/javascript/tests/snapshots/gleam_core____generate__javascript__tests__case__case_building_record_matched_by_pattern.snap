@@ -1,0 +1,30 @@
+---
+source: compiler-core/src_refactored/__generate/javascript/tests/case.rs
+assertion_line: 475
+expression: "pub fn go(x) {\n   case x {\n     Ok(1) -> Ok(1)\n     Ok(n) -> Ok(n)\n     Error(_) -> Error(Nil)\n   }\n}"
+snapshot_kind: text
+---
+----- SOURCE CODE
+pub fn go(x) {
+   case x {
+     Ok(1) -> Ok(1)
+     Ok(n) -> Ok(n)
+     Error(_) -> Error(Nil)
+   }
+}
+
+----- COMPILED JAVASCRIPT
+import { Ok, Error } from "../gleam.mjs";
+
+export function go(x) {
+  if (x instanceof Ok) {
+    let $ = x[0];
+    if ($ === 1) {
+      return x;
+    } else {
+      return x;
+    }
+  } else {
+    return new Error(undefined);
+  }
+}

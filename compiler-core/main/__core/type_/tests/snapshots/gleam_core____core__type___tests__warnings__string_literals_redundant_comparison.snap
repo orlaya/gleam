@@ -1,0 +1,17 @@
+---
+source: compiler-core/src_refactored/__core/type_/tests/warnings.rs
+assertion_line: 4249
+expression: "pub fn main() { \"wibble\" == \"wobble\" }"
+snapshot_kind: text
+---
+----- SOURCE CODE
+pub fn main() { "wibble" == "wobble" }
+
+----- WARNING
+warning: Redundant comparison
+  ┌─ /src/warning/wrn.gleam:1:17
+  │
+1 │ pub fn main() { "wibble" == "wobble" }
+  │                 ^^^^^^^^^^^^^^^^^^^^ This is always `False`
+
+This comparison is redundant since it always fails.

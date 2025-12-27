@@ -1,0 +1,19 @@
+---
+source: compiler-core/src_refactored/__generate/javascript/tests/bit_arrays.rs
+assertion_line: 264
+expression: "\npub fn go(x) {\n  <<256, 4, x, \"Gleam\":utf8>>\n}\n"
+snapshot_kind: text
+---
+----- SOURCE CODE
+
+pub fn go(x) {
+  <<256, 4, x, "Gleam":utf8>>
+}
+
+
+----- COMPILED JAVASCRIPT
+import { toBitArray, stringBits } from "../gleam.mjs";
+
+export function go(x) {
+  return toBitArray([0, 4, x, stringBits("Gleam")]);
+}

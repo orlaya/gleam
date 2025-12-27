@@ -1,0 +1,31 @@
+---
+source: compiler-core/src_refactored/__core/type_/tests/warnings.rs
+assertion_line: 3080
+expression: "\npub fn main() {\n    {\n        use _ <- fn(a) { a }\n        1\n    }\n\n    Nil\n}\n"
+snapshot_kind: text
+---
+----- SOURCE CODE
+
+pub fn main() {
+    {
+        use _ <- fn(a) { a }
+        1
+    }
+
+    Nil
+}
+
+
+----- WARNING
+warning: Unused value
+  ┌─ /src/warning/wrn.gleam:3:5
+  │  
+3 │ ╭     {
+4 │ │         use _ <- fn(a) { a }
+5 │ │         1
+6 │ │     }
+  │ ╰─────^ This value is never used
+
+This expression computes a value without any side effects, but then the
+value isn't used at all. You might want to assign it to a variable, or
+delete the expression entirely if it's not needed.

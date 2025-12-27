@@ -1,0 +1,32 @@
+---
+source: compiler-core/src_refactored/__core/type_/tests/errors.rs
+assertion_line: 3305
+expression: "\nimport some_module\n\npub fn main() {\n  some_module.main()\n}\n"
+snapshot_kind: text
+---
+----- SOURCE CODE
+-- some_module.gleam
+pub fn main() { Nil }
+
+-- main.gleam
+
+import some_module
+
+pub fn main() {
+  some_module.main()
+}
+
+
+----- ERROR
+error: App importing dev dependency
+  ┌─ /src/one/two.gleam:2:1
+  │
+2 │ import some_module
+  │ ^^^^^^^^^^^^^^^^^^
+
+The application module `themodule` is importing the module `some_module`,
+but `dev_dependency`, the package it belongs to, is a dev dependency.
+
+Dev dependencies are not included in production builds so application
+modules should not import them. Perhaps change `dev_dependency` to a
+regular dependency.

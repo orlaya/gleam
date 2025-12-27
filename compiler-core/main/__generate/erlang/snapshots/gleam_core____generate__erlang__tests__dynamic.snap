@@ -1,0 +1,16 @@
+---
+source: compiler-core/src_refactored/__generate/erlang/tests.rs
+assertion_line: 661
+expression: pub type Dynamic
+snapshot_kind: text
+---
+----- SOURCE CODE
+pub type Dynamic
+
+----- COMPILED ERLANG
+-module(my@mod).
+-compile([no_auto_import, nowarn_unused_vars, nowarn_unused_function, nowarn_nomatch, inline]).
+-define(FILEPATH, "project/test/my/mod.gleam").
+-export_type([dynamic_/0]).
+
+-type dynamic_() :: any().

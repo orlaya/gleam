@@ -10,7 +10,7 @@ use crate::{cli, fs::ProjectIO, http::HttpClient};
 use gleam_core::{
     Result,
     analyse::TargetSupport,
-    build::{Codegen, Compile, Mode, Options, Package, Target},
+    compiler::{Codegen, Compile, Mode, Options, Package, Target},
     config::{DocsPage, PackageConfig},
     docs::{Dependency, DependencyKind, DocContext},
     error::Error,

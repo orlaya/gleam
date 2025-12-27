@@ -1,0 +1,51 @@
+---
+source: compiler-core/src_refactored/__generate/javascript/tests/assignments.rs
+assertion_line: 191
+expression: "\ntype Wibble {\n  Wibble(wibble: String)\n}\n\npub fn main() {\n  let assert Wibble(wibble: \"w\" as prefix <> rest) = Wibble(\"wibble\")\n  prefix <> rest\n}\n"
+snapshot_kind: text
+---
+----- SOURCE CODE
+
+type Wibble {
+  Wibble(wibble: String)
+}
+
+pub fn main() {
+  let assert Wibble(wibble: "w" as prefix <> rest) = Wibble("wibble")
+  prefix <> rest
+}
+
+
+----- COMPILED JAVASCRIPT
+import { CustomType as $CustomType, makeError } from "../gleam.mjs";
+
+const FILEPATH = "src/module.gleam";
+
+class Wibble extends $CustomType {
+  constructor(wibble) {
+    super();
+    this.wibble = wibble;
+  }
+}
+
+export function main() {
+  let $ = new Wibble("wibble");
+  let prefix;
+  let rest;
+  let $1 = $.wibble;
+  if ($1.startsWith("w")) {
+    prefix = "w";
+    rest = $1.slice(1);
+  } else {
+    throw makeError(
+      "let_assert",
+      FILEPATH,
+      "my/mod",
+      7,
+      "main",
+      "Pattern match failed, no pattern matched the value.",
+      { value: $, start: 61, end: 128, pattern_start: 72, pattern_end: 109 }
+    )
+  }
+  return prefix + rest;
+}

@@ -1,0 +1,17 @@
+---
+source: compiler-core/src_refactored/__generate/javascript/tests/numbers.rs
+assertion_line: 133
+expression: "\npub fn go() {\n  111111111111111111111111111111. /. 22222222222222222222222222222222222.\n}\n"
+snapshot_kind: text
+---
+----- SOURCE CODE
+
+pub fn go() {
+  111111111111111111111111111111. /. 22222222222222222222222222222222222.
+}
+
+
+----- COMPILED JAVASCRIPT
+export function go() {
+  return 1.111111111111111e29 / 2.222222222222222e34;
+}

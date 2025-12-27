@@ -1,0 +1,17 @@
+---
+source: compiler-core/src_refactored/__core/type_/tests/errors.rs
+assertion_line: 3126
+expression: "let assert <<1:size(-1)>> = <<>>"
+snapshot_kind: text
+---
+----- SOURCE CODE
+let assert <<1:size(-1)>> = <<>>
+
+----- ERROR
+error: Invalid bit array segment
+  ┌─ /src/one/two.gleam:1:16
+  │
+1 │ let assert <<1:size(-1)>> = <<>>
+  │                ^^^^^^^^ A constant size must be a positive number
+
+See: https://tour.gleam.run/data-types/bit-arrays/

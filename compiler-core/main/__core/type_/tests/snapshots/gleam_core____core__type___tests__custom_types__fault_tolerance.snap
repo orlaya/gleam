@@ -1,0 +1,31 @@
+---
+source: compiler-core/src_refactored/__core/type_/tests/custom_types.rs
+assertion_line: 88
+expression: "\npub type Cat {\n  Cat(UnknownType)\n}\n\npub type Kitten = AnotherUnknownType\n        "
+snapshot_kind: text
+---
+----- SOURCE CODE
+
+pub type Cat {
+  Cat(UnknownType)
+}
+
+pub type Kitten = AnotherUnknownType
+        
+
+----- ERROR
+error: Unknown type
+  ┌─ /src/one/two.gleam:3:7
+  │
+3 │   Cat(UnknownType)
+  │       ^^^^^^^^^^^
+
+The type `UnknownType` is not defined or imported in this module.
+
+error: Unknown type
+  ┌─ /src/one/two.gleam:6:19
+  │
+6 │ pub type Kitten = AnotherUnknownType
+  │                   ^^^^^^^^^^^^^^^^^^
+
+The type `AnotherUnknownType` is not defined or imported in this module.

@@ -1,0 +1,27 @@
+---
+source: compiler-core/src_refactored/__parse/parse/tests.rs
+assertion_line: 1262
+expression: "\ntype User {\n    name: \"Test User\",\n}\n"
+snapshot_kind: text
+---
+----- SOURCE CODE
+
+type User {
+    name: "Test User",
+}
+
+
+----- ERROR
+error: Syntax error
+  ┌─ /src/parse/error.gleam:3:5
+  │
+3 │     name: "Test User",
+  │     ^^^^ I was not expecting this
+
+Each custom type variant must have a constructor:
+
+type User {
+  User(
+    name: Type,
+  )
+}

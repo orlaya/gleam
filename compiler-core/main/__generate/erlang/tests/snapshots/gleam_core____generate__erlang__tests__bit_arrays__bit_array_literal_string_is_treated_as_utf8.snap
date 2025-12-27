@@ -1,0 +1,22 @@
+---
+source: compiler-core/src_refactored/__generate/erlang/tests/bit_arrays.rs
+assertion_line: 166
+expression: "\npub fn main() {\n  <<\"hello\", \" \", \"world\">>\n}"
+snapshot_kind: text
+---
+----- SOURCE CODE
+
+pub fn main() {
+  <<"hello", " ", "world">>
+}
+
+----- COMPILED ERLANG
+-module(my@mod).
+-compile([no_auto_import, nowarn_unused_vars, nowarn_unused_function, nowarn_nomatch, inline]).
+-define(FILEPATH, "project/test/my/mod.gleam").
+-export([main/0]).
+
+-file("project/test/my/mod.gleam", 2).
+-spec main() -> bitstring().
+main() ->
+    <<"hello"/utf8, " "/utf8, "world"/utf8>>.

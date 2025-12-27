@@ -1,0 +1,28 @@
+---
+source: compiler-core/src_refactored/__generate/javascript/tests/blocks.rs
+assertion_line: 298
+expression: "\npub fn main() {\n  let a = {\n    let b = 1\n    let c = b + 1\n  }\n  a\n}\n"
+snapshot_kind: text
+---
+----- SOURCE CODE
+
+pub fn main() {
+  let a = {
+    let b = 1
+    let c = b + 1
+  }
+  a
+}
+
+
+----- COMPILED JAVASCRIPT
+export function main() {
+  let _block;
+  {
+    let b = 1;
+    let c = b + 1;
+    _block = c;
+  }
+  let a = _block;
+  return a;
+}

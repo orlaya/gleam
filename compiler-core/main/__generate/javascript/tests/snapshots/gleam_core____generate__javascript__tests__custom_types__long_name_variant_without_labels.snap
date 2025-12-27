@@ -1,0 +1,57 @@
+---
+source: compiler-core/src_refactored/__generate/javascript/tests/custom_types.rs
+assertion_line: 193
+expression: "\npub type TypeWithALongNameAndSeveralArguments{\n  TypeWithALongNameAndSeveralArguments(String, String, String, String, String)\n}\n\n\npub fn go() {\n  TypeWithALongNameAndSeveralArguments\n}\n"
+snapshot_kind: text
+---
+----- SOURCE CODE
+
+pub type TypeWithALongNameAndSeveralArguments{
+  TypeWithALongNameAndSeveralArguments(String, String, String, String, String)
+}
+
+
+pub fn go() {
+  TypeWithALongNameAndSeveralArguments
+}
+
+
+----- COMPILED JAVASCRIPT
+import { CustomType as $CustomType } from "../gleam.mjs";
+
+export class TypeWithALongNameAndSeveralArguments extends $CustomType {
+  constructor($0, $1, $2, $3, $4) {
+    super();
+    this[0] = $0;
+    this[1] = $1;
+    this[2] = $2;
+    this[3] = $3;
+    this[4] = $4;
+  }
+}
+export const TypeWithALongNameAndSeveralArguments$TypeWithALongNameAndSeveralArguments = ($0, $1, $2, $3, $4) =>
+  new TypeWithALongNameAndSeveralArguments($0, $1, $2, $3, $4);
+export const TypeWithALongNameAndSeveralArguments$isTypeWithALongNameAndSeveralArguments = (value) =>
+  value instanceof TypeWithALongNameAndSeveralArguments;
+export const TypeWithALongNameAndSeveralArguments$TypeWithALongNameAndSeveralArguments$0 = (value) =>
+  value[0];
+export const TypeWithALongNameAndSeveralArguments$TypeWithALongNameAndSeveralArguments$1 = (value) =>
+  value[1];
+export const TypeWithALongNameAndSeveralArguments$TypeWithALongNameAndSeveralArguments$2 = (value) =>
+  value[2];
+export const TypeWithALongNameAndSeveralArguments$TypeWithALongNameAndSeveralArguments$3 = (value) =>
+  value[3];
+export const TypeWithALongNameAndSeveralArguments$TypeWithALongNameAndSeveralArguments$4 = (value) =>
+  value[4];
+
+export function go() {
+  return (var0, var1, var2, var3, var4) => {
+    return new TypeWithALongNameAndSeveralArguments(
+      var0,
+      var1,
+      var2,
+      var3,
+      var4,
+    );
+  };
+}

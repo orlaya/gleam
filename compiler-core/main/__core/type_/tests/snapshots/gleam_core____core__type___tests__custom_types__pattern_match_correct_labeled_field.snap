@@ -1,0 +1,31 @@
+---
+source: compiler-core/src_refactored/__core/type_/tests/custom_types.rs
+assertion_line: 188
+expression: "\ntype Fish {\n  Starfish()\n  Jellyfish(name: String, jiggly: Bool)\n}\n\nfn handle_fish(fish: Fish) {\n  case fish {\n    Starfish() -> False\n    Jellyfish(jiggly:) -> jiggly  // <- error is here\n  }\n}\n"
+snapshot_kind: text
+---
+----- SOURCE CODE
+
+type Fish {
+  Starfish()
+  Jellyfish(name: String, jiggly: Bool)
+}
+
+fn handle_fish(fish: Fish) {
+  case fish {
+    Starfish() -> False
+    Jellyfish(jiggly:) -> jiggly  // <- error is here
+  }
+}
+
+
+----- ERROR
+error: Incorrect arity
+   ┌─ /src/one/two.gleam:10:5
+   │
+10 │     Jellyfish(jiggly:) -> jiggly  // <- error is here
+   │     ^^^^^^^^^^^^^^^^^^ Expected 2 arguments, got 1
+
+This pattern accepts these additional labelled arguments:
+
+  - name

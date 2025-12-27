@@ -1,0 +1,29 @@
+---
+source: compiler-core/src_refactored/__generate/javascript/tests/case.rs
+assertion_line: 403
+expression: "\nimport gleam.{Error as E, Ok as O}\n\npub fn go(x) {\n  case x {\n    E(_) -> 1\n    O(_) -> 2\n  }\n}\n"
+snapshot_kind: text
+---
+----- SOURCE CODE
+
+import gleam.{Error as E, Ok as O}
+
+pub fn go(x) {
+  case x {
+    E(_) -> 1
+    O(_) -> 2
+  }
+}
+
+
+----- COMPILED JAVASCRIPT
+import * as $gleam from "../gleam.mjs";
+import { Error as E, Ok as O, Ok } from "../gleam.mjs";
+
+export function go(x) {
+  if (x instanceof O) {
+    return 2;
+  } else {
+    return 1;
+  }
+}

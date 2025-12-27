@@ -1,0 +1,17 @@
+---
+source: compiler-core/src_refactored/__core/type_/tests/warnings.rs
+assertion_line: 200
+expression: type X
+snapshot_kind: text
+---
+----- SOURCE CODE
+type X
+
+----- WARNING
+warning: Unused private type
+  ┌─ /src/warning/wrn.gleam:1:1
+  │
+1 │ type X
+  │ ^^^^^^ This private type is never used
+
+Hint: You can safely remove it.

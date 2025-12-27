@@ -1,0 +1,34 @@
+---
+source: compiler-core/src/javascript/tests/bit_arrays.rs
+expression: "\npub fn go(x) {\n  let assert <<_:4, f:bits-2, _:1>> = <<0x77:7>>\n}\n"
+---
+----- SOURCE CODE
+
+pub fn go(x) {
+  let assert <<_:4, f:bits-2, _:1>> = <<0x77:7>>
+}
+
+
+----- COMPILED JAVASCRIPT
+import { makeError, toBitArray, bitArraySlice, sizedInt } from "../gleam.mjs";
+
+const FILEPATH = "src/module.gleam";
+
+export function go(x) {
+  let $ = toBitArray([sizedInt(0x77, 7, true)]);
+  let f;
+  if ($.bitSize >= 4 && $.bitSize >= 6 && $.bitSize === 7) {
+    f = bitArraySlice($, 4, 6);
+  } else {
+    throw makeError(
+      "let_assert",
+      FILEPATH,
+      "my/mod",
+      3,
+      "go",
+      "Pattern match failed, no pattern matched the value.",
+      { value: $, start: 18, end: 64, pattern_start: 29, pattern_end: 51 }
+    )
+  }
+  return $;
+}

@@ -1,0 +1,19 @@
+---
+source: compiler-core/src_refactored/__core/type_/tests/errors.rs
+assertion_line: 1286
+expression: type Fancy_Bool = Bool
+snapshot_kind: text
+---
+----- SOURCE CODE
+type Fancy_Bool = Bool
+
+----- ERROR
+error: Invalid type alias name
+  ┌─ /src/one/two.gleam:1:6
+  │
+1 │ type Fancy_Bool = Bool
+  │      ^^^^^^^^^^ This is not a valid type alias name
+
+Hint: Type alias names start with an uppercase letter and contain only
+lowercase letters, numbers, and uppercase letters.
+Try: FancyBool

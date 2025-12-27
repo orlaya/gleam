@@ -1,0 +1,19 @@
+---
+source: compiler-core/src_refactored/__generate/javascript/tests/numbers.rs
+assertion_line: 191
+expression: "\npub fn go(y) {\n  let x = 1.0\n  x == y\n}\n"
+snapshot_kind: text
+---
+----- SOURCE CODE
+
+pub fn go(y) {
+  let x = 1.0
+  x == y
+}
+
+
+----- COMPILED JAVASCRIPT
+export function go(y) {
+  let x = 1.0;
+  return x === y;
+}

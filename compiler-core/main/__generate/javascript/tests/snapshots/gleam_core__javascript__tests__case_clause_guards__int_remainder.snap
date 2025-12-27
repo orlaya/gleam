@@ -1,0 +1,26 @@
+---
+source: compiler-core/src/javascript/tests/case_clause_guards.rs
+expression: "\npub fn main() {\n  case 4 % 0 {\n    x if x == 4 % 0 -> True\n    _ -> False\n  }\n}\n"
+---
+----- SOURCE CODE
+
+pub fn main() {
+  case 4 % 0 {
+    x if x == 4 % 0 -> True
+    _ -> False
+  }
+}
+
+
+----- COMPILED JAVASCRIPT
+import { remainderInt } from "../gleam.mjs";
+
+export function main() {
+  let $ = 0;
+  let x = $;
+  if (x === (remainderInt(4, 0))) {
+    return true;
+  } else {
+    return false;
+  }
+}

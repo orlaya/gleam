@@ -1,0 +1,58 @@
+---
+source: compiler-core/src_refactored/__generate/javascript/tests/custom_types.rs
+assertion_line: 152
+expression: "\npub type Ip {\n    Ip(String)\n}\n\npub const local = Ip(\"0.0.0.0\")\n\npub fn build(x) {\n    x(\"1.2.3.4\")\n}\n\npub fn go() {\n    build(Ip)\n    Ip(\"5.6.7.8\")\n}\n\npub fn destructure(x) {\n  let Ip(raw) = x\n  raw\n}\n"
+snapshot_kind: text
+---
+----- SOURCE CODE
+
+pub type Ip {
+    Ip(String)
+}
+
+pub const local = Ip("0.0.0.0")
+
+pub fn build(x) {
+    x("1.2.3.4")
+}
+
+pub fn go() {
+    build(Ip)
+    Ip("5.6.7.8")
+}
+
+pub fn destructure(x) {
+  let Ip(raw) = x
+  raw
+}
+
+
+----- COMPILED JAVASCRIPT
+import { CustomType as $CustomType } from "../gleam.mjs";
+
+export class Ip extends $CustomType {
+  constructor($0) {
+    super();
+    this[0] = $0;
+  }
+}
+export const Ip$Ip = ($0) => new Ip($0);
+export const Ip$isIp = (value) => value instanceof Ip;
+export const Ip$Ip$0 = (value) => value[0];
+
+export const local = /* @__PURE__ */ new Ip("0.0.0.0");
+
+export function build(x) {
+  return x("1.2.3.4");
+}
+
+export function go() {
+  build((var0) => { return new Ip(var0); });
+  return new Ip("5.6.7.8");
+}
+
+export function destructure(x) {
+  let raw;
+  raw = x[0];
+  return raw;
+}

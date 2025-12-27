@@ -1,0 +1,21 @@
+---
+source: compiler-core/src/javascript/tests/strings.rs
+assertion_line: 71
+expression: "\npub fn go(a) {\n  a == \"ok\"\n  a != \"ok\"\n  a == a\n}\n"
+snapshot_kind: text
+---
+----- SOURCE CODE
+
+pub fn go(a) {
+  a == "ok"
+  a != "ok"
+  a == a
+}
+
+
+----- COMPILED JAVASCRIPT
+export function go(a) {
+  a === "ok";
+  a !== "ok";
+  return a === a;
+}

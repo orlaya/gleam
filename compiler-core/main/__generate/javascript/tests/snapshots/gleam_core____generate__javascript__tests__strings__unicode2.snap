@@ -1,0 +1,17 @@
+---
+source: compiler-core/src_refactored/__generate/javascript/tests/strings.rs
+assertion_line: 16
+expression: "\npub fn y_with_dieresis() -> String {\n  \"\\u{0308}y\"\n}\n"
+snapshot_kind: text
+---
+----- SOURCE CODE
+
+pub fn y_with_dieresis() -> String {
+  "\u{0308}y"
+}
+
+
+----- COMPILED JAVASCRIPT
+export function y_with_dieresis() {
+  return "\u{0308}y";
+}

@@ -1,0 +1,20 @@
+---
+source: compiler-core/src_refactored/__generate/javascript/tests/custom_types.rs
+assertion_line: 475
+expression: "import other.{Two}\npub const main = Two(1)\n"
+snapshot_kind: text
+---
+----- SOURCE CODE
+-- other.gleam
+pub type One { Two(Int) }
+
+-- main.gleam
+import other.{Two}
+pub const main = Two(1)
+
+
+----- COMPILED JAVASCRIPT
+import * as $other from "../other.mjs";
+import { Two } from "../other.mjs";
+
+export const main = /* @__PURE__ */ new Two(1);

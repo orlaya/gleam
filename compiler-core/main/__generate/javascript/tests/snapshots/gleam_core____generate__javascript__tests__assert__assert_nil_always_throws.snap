@@ -1,0 +1,18 @@
+---
+source: compiler-core/src_refactored/__generate/javascript/tests/assert.rs
+assertion_line: 168
+expression: "\npub fn go(x: Nil) {\n  let assert Nil = x\n}\n"
+snapshot_kind: text
+---
+----- SOURCE CODE
+
+pub fn go(x: Nil) {
+  let assert Nil = x
+}
+
+
+----- COMPILED JAVASCRIPT
+export function go(x) {
+  
+  return x;
+}

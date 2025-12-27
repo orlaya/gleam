@@ -1,0 +1,26 @@
+---
+source: compiler-core/src_refactored/__generate/javascript/tests/records.rs
+assertion_line: 86
+expression: "\npub type Wibble {\n  Wibble(then: fn() -> Int)\n}\n"
+snapshot_kind: text
+---
+----- SOURCE CODE
+
+pub type Wibble {
+  Wibble(then: fn() -> Int)
+}
+
+
+----- COMPILED JAVASCRIPT
+import { CustomType as $CustomType } from "../gleam.mjs";
+
+export class Wibble extends $CustomType {
+  constructor(then$) {
+    super();
+    this.then$ = then$;
+  }
+}
+export const Wibble$Wibble = (then$) => new Wibble(then$);
+export const Wibble$isWibble = (value) => value instanceof Wibble;
+export const Wibble$Wibble$then = (value) => value.then$;
+export const Wibble$Wibble$0 = (value) => value.then$;

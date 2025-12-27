@@ -1,0 +1,27 @@
+---
+source: compiler-core/src_refactored/__core/type_/tests/warnings.rs
+assertion_line: 990
+expression: "\nimport module.{a}\n\npub fn b() {\n  a\n}\n"
+snapshot_kind: text
+---
+----- SOURCE CODE
+-- module.gleam
+@deprecated("Don't use this!") pub fn a() { Nil }
+
+-- main.gleam
+
+import module.{a}
+
+pub fn b() {
+  a
+}
+
+
+----- WARNING
+warning: Deprecated value used
+  ┌─ /src/warning/wrn.gleam:5:3
+  │
+5 │   a
+  │   ^ This value has been deprecated
+
+It was deprecated with this message: Don't use this!

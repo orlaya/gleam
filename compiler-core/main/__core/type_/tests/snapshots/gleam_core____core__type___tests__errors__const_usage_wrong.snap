@@ -1,0 +1,24 @@
+---
+source: compiler-core/src_refactored/__core/type_/tests/errors.rs
+assertion_line: 1508
+expression: "const pair = #(1, 2.0)\nfn main() { 1 == pair }"
+snapshot_kind: text
+---
+----- SOURCE CODE
+const pair = #(1, 2.0)
+fn main() { 1 == pair }
+
+----- ERROR
+error: Type mismatch
+  ┌─ /src/one/two.gleam:2:18
+  │
+2 │ fn main() { 1 == pair }
+  │                  ^^^^
+
+Expected type:
+
+    Int
+
+Found type:
+
+    #(Int, Float)

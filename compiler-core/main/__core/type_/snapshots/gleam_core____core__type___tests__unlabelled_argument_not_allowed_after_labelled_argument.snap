@@ -1,0 +1,21 @@
+---
+source: compiler-core/src_refactored/__core/type_/tests.rs
+assertion_line: 3337
+expression: "\npub type Bad {\n  Bad(labelled: Int, Float)\n}\n"
+snapshot_kind: text
+---
+----- SOURCE CODE
+
+pub type Bad {
+  Bad(labelled: Int, Float)
+}
+
+
+----- ERROR
+error: Unlabelled argument after labelled argument
+  ┌─ /src/one/two.gleam:3:22
+  │
+3 │   Bad(labelled: Int, Float)
+  │                      ^^^^^
+
+All unlabelled arguments must come before any labelled arguments.

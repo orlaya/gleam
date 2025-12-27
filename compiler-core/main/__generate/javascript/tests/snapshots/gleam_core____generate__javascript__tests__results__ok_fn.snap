@@ -1,0 +1,15 @@
+---
+source: compiler-core/src_refactored/__generate/javascript/tests/results.rs
+assertion_line: 15
+expression: "pub fn main() { Ok }"
+snapshot_kind: text
+---
+----- SOURCE CODE
+pub fn main() { Ok }
+
+----- COMPILED JAVASCRIPT
+import { Ok } from "../gleam.mjs";
+
+export function main() {
+  return (var0) => { return new Ok(var0); };
+}

@@ -1,0 +1,30 @@
+---
+source: compiler-core/src_refactored/__generate/javascript/tests/case.rs
+assertion_line: 227
+expression: "\npub fn go(x, y) {\n  let z = False\n  case True {\n    x if #(x, z) == #(True, False) -> x\n    _ -> False\n  }\n}\n"
+snapshot_kind: text
+---
+----- SOURCE CODE
+
+pub fn go(x, y) {
+  let z = False
+  case True {
+    x if #(x, z) == #(True, False) -> x
+    _ -> False
+  }
+}
+
+
+----- COMPILED JAVASCRIPT
+import { isEqual } from "../gleam.mjs";
+
+export function go(x, y) {
+  let z = false;
+  let $ = true;
+  let x$1 = $;
+  if (isEqual([x$1, z], [true, false])) {
+    return $;
+  } else {
+    return false;
+  }
+}

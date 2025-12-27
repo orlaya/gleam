@@ -1,0 +1,20 @@
+---
+source: compiler-core/src_refactored/__core/type_/tests/errors.rs
+assertion_line: 1114
+expression: "type DupType { A } type DupType { B }"
+snapshot_kind: text
+---
+----- SOURCE CODE
+type DupType { A } type DupType { B }
+
+----- ERROR
+error: Duplicate type definition
+  ┌─ /src/one/two.gleam:1:20
+  │
+1 │ type DupType { A } type DupType { B }
+  │ ------------       ^^^^^^^^^^^^ Redefined here
+  │ │                   
+  │ First defined here
+
+The type `DupType` has been defined multiple times.
+Names in a Gleam module must be unique so one will need to be renamed.

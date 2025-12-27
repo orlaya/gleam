@@ -1,0 +1,32 @@
+---
+source: compiler-core/src_refactored/__generate/javascript/tests/numbers.rs
+assertion_line: 294
+expression: "\npub fn main(x) {\n  let assert 09_179 = x\n}\n"
+snapshot_kind: text
+---
+----- SOURCE CODE
+
+pub fn main(x) {
+  let assert 09_179 = x
+}
+
+
+----- COMPILED JAVASCRIPT
+import { makeError } from "../gleam.mjs";
+
+const FILEPATH = "src/module.gleam";
+
+export function main(x) {
+  if (!(x === 9179)) {
+    throw makeError(
+      "let_assert",
+      FILEPATH,
+      "my/mod",
+      3,
+      "main",
+      "Pattern match failed, no pattern matched the value.",
+      { value: x, start: 20, end: 41, pattern_start: 31, pattern_end: 37 }
+    )
+  }
+  return x;
+}

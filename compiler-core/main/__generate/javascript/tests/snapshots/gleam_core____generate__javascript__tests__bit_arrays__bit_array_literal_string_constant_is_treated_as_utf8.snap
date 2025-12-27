@@ -1,0 +1,17 @@
+---
+source: compiler-core/src_refactored/__generate/javascript/tests/bit_arrays.rs
+assertion_line: 1742
+expression: "pub const a = <<\"hello\", \" \", \"world\">>"
+snapshot_kind: text
+---
+----- SOURCE CODE
+pub const a = <<"hello", " ", "world">>
+
+----- COMPILED JAVASCRIPT
+import { toBitArray, stringBits } from "../gleam.mjs";
+
+export const a = /* @__PURE__ */ toBitArray([
+  stringBits("hello"),
+  stringBits(" "),
+  stringBits("world"),
+]);

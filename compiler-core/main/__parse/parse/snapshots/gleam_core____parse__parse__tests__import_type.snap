@@ -1,0 +1,86 @@
+---
+source: compiler-core/src_refactored/__parse/parse/tests.rs
+assertion_line: 861
+expression: "import wibble.{type Wobble, Wobble, type Wabble}"
+snapshot_kind: text
+---
+Parsed {
+    module: Module {
+        name: "",
+        documentation: [],
+        type_info: (),
+        definitions: [
+            TargetedDefinition {
+                definition: Import(
+                    Import {
+                        documentation: None,
+                        location: SrcSpan {
+                            start: 0,
+                            end: 48,
+                        },
+                        module: "wibble",
+                        as_name: None,
+                        unqualified_values: [
+                            UnqualifiedImport {
+                                location: SrcSpan {
+                                    start: 28,
+                                    end: 34,
+                                },
+                                imported_name_location: SrcSpan {
+                                    start: 28,
+                                    end: 34,
+                                },
+                                name: "Wobble",
+                                as_name: None,
+                            },
+                        ],
+                        unqualified_types: [
+                            UnqualifiedImport {
+                                location: SrcSpan {
+                                    start: 15,
+                                    end: 26,
+                                },
+                                imported_name_location: SrcSpan {
+                                    start: 20,
+                                    end: 26,
+                                },
+                                name: "Wobble",
+                                as_name: None,
+                            },
+                            UnqualifiedImport {
+                                location: SrcSpan {
+                                    start: 36,
+                                    end: 47,
+                                },
+                                imported_name_location: SrcSpan {
+                                    start: 41,
+                                    end: 47,
+                                },
+                                name: "Wabble",
+                                as_name: None,
+                            },
+                        ],
+                        package: (),
+                    },
+                ),
+                target: None,
+            },
+        ],
+        names: Names {
+            local_types: {},
+            imported_modules: {},
+            type_variables: {},
+            local_value_constructors: {},
+            reexport_aliases: {},
+        },
+        unused_definition_positions: {},
+    },
+    extra: ModuleExtra {
+        module_comments: [],
+        doc_comments: [],
+        comments: [],
+        empty_lines: [],
+        new_lines: [],
+        trailing_commas: [],
+    },
+}

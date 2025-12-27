@@ -1,0 +1,16 @@
+---
+source: compiler-core/src_refactored/__generate/javascript/tests/consts.rs
+assertion_line: 101
+expression: "\n        pub const a = True\n        pub const b = False\n    "
+snapshot_kind: text
+---
+----- SOURCE CODE
+
+        pub const a = True
+        pub const b = False
+    
+
+----- COMPILED JAVASCRIPT
+export const a = true;
+
+export const b = false;

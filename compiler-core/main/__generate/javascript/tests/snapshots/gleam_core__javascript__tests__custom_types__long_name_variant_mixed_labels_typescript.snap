@@ -1,0 +1,65 @@
+---
+source: compiler-core/src/javascript/tests/custom_types.rs
+assertion_line: 209
+expression: "\npub type TypeWithALongNameAndSeveralArguments{\n  TypeWithALongNameAndSeveralArguments(String, String, String, a: String, b: String)\n}\n\npub const local = TypeWithALongNameAndSeveralArguments(\"one\", \"two\", \"three\", \"four\", \"five\")\n"
+snapshot_kind: text
+---
+----- SOURCE CODE
+
+pub type TypeWithALongNameAndSeveralArguments{
+  TypeWithALongNameAndSeveralArguments(String, String, String, a: String, b: String)
+}
+
+pub const local = TypeWithALongNameAndSeveralArguments("one", "two", "three", "four", "five")
+
+
+----- TYPESCRIPT DEFINITIONS
+import type * as _ from "../gleam.d.mts";
+
+export class TypeWithALongNameAndSeveralArguments extends _.CustomType {
+  /** @deprecated */
+  constructor(
+    argument$0: string,
+    argument$1: string,
+    argument$2: string,
+    a: string,
+    b: string
+  );
+  /** @deprecated */
+  0: string;
+  /** @deprecated */
+  1: string;
+  /** @deprecated */
+  2: string;
+  /** @deprecated */
+  a: string;
+  /** @deprecated */
+  b: string;
+}
+export function TypeWithALongNameAndSeveralArguments$TypeWithALongNameAndSeveralArguments(
+  $0: string,
+  $1: string,
+  $2: string,
+  a: string,
+  b: string,
+): TypeWithALongNameAndSeveralArguments$;
+export function TypeWithALongNameAndSeveralArguments$isTypeWithALongNameAndSeveralArguments(
+  value: TypeWithALongNameAndSeveralArguments$,
+): boolean;
+export function TypeWithALongNameAndSeveralArguments$TypeWithALongNameAndSeveralArguments$0(value: TypeWithALongNameAndSeveralArguments$): string;
+export function TypeWithALongNameAndSeveralArguments$TypeWithALongNameAndSeveralArguments$1(
+  value: TypeWithALongNameAndSeveralArguments$,
+): string;
+export function TypeWithALongNameAndSeveralArguments$TypeWithALongNameAndSeveralArguments$2(value: TypeWithALongNameAndSeveralArguments$): string;
+export function TypeWithALongNameAndSeveralArguments$TypeWithALongNameAndSeveralArguments$3(
+  value: TypeWithALongNameAndSeveralArguments$,
+): string;
+export function TypeWithALongNameAndSeveralArguments$TypeWithALongNameAndSeveralArguments$a(value: TypeWithALongNameAndSeveralArguments$): string;
+export function TypeWithALongNameAndSeveralArguments$TypeWithALongNameAndSeveralArguments$4(
+  value: TypeWithALongNameAndSeveralArguments$,
+): string;
+export function TypeWithALongNameAndSeveralArguments$TypeWithALongNameAndSeveralArguments$b(value: TypeWithALongNameAndSeveralArguments$): string;
+
+export type TypeWithALongNameAndSeveralArguments$ = TypeWithALongNameAndSeveralArguments;
+
+export const local: TypeWithALongNameAndSeveralArguments$;

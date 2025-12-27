@@ -1,0 +1,21 @@
+---
+source: compiler-core/src_refactored/__core/type_/tests/assert.rs
+assertion_line: 76
+expression: "\npub fn main() {\n  assert 1 == 2\n}\n"
+snapshot_kind: text
+---
+----- SOURCE CODE
+
+pub fn main() {
+  assert 1 == 2
+}
+
+
+----- WARNING
+warning: Redundant comparison
+  ┌─ /src/warning/wrn.gleam:3:10
+  │
+3 │   assert 1 == 2
+  │          ^^^^^^ This is always `False`
+
+This comparison is redundant since it always fails.

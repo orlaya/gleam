@@ -1,0 +1,19 @@
+---
+source: compiler-core/src_refactored/__core/type_/tests/errors.rs
+assertion_line: 3324
+expression: "pub fn main() {\n  let a: Result() = todo\n}"
+snapshot_kind: text
+---
+----- SOURCE CODE
+pub fn main() {
+  let a: Result() = todo
+}
+
+----- ERROR
+error: Incorrect arity
+  ┌─ /src/one/two.gleam:2:10
+  │
+2 │   let a: Result() = todo
+  │          ^^^^^^^^ Expected 2 type arguments, got 0
+
+`Result` requires 2 type arguments but none where provided.

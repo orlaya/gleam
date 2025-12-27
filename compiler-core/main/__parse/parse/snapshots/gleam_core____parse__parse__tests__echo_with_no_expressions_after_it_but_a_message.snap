@@ -1,0 +1,27 @@
+---
+source: compiler-core/src_refactored/__parse/parse/tests.rs
+assertion_line: 486
+expression: echo as message
+snapshot_kind: text
+---
+[
+    Expression(
+        Echo {
+            location: SrcSpan {
+                start: 0,
+                end: 15,
+            },
+            keyword_end: 4,
+            expression: None,
+            message: Some(
+                Var {
+                    location: SrcSpan {
+                        start: 8,
+                        end: 15,
+                    },
+                    name: "message",
+                },
+            ),
+        },
+    ),
+]

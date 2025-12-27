@@ -29,8 +29,8 @@ use self::import::{Imports, Member};
 
 const INDENT: isize = 2;
 
-pub const PRELUDE: &str = include_str!("../templates/prelude.mjs");
-pub const PRELUDE_TS_DEF: &str = include_str!("../templates/prelude.d.mts");
+pub const PRELUDE: &str = include_str!("../__templates/prelude.mjs");
+pub const PRELUDE_TS_DEF: &str = include_str!("../__templates/prelude.d.mts");
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub enum JavaScriptCodegenTarget {
@@ -272,7 +272,7 @@ impl<'a> Generator<'a> {
         self.register_prelude_usage(imports, "BitArray", Some("$BitArray"));
         self.register_prelude_usage(imports, "List", Some("$List"));
         self.register_prelude_usage(imports, "UtfCodepoint", Some("$UtfCodepoint"));
-        docvec![line(), std::include_str!("../templates/echo.mjs"), line()]
+        docvec![line(), std::include_str!("../__templates/echo.mjs"), line()]
     }
 
     fn register_prelude_usage(

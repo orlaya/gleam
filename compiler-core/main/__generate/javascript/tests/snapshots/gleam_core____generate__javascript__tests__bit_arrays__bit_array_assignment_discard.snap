@@ -1,0 +1,37 @@
+---
+source: compiler-core/src_refactored/__generate/javascript/tests/bit_arrays.rs
+assertion_line: 2076
+expression: "\npub fn main() {\n let assert <<_ as number>> = <<10>>\n number\n}\n"
+snapshot_kind: text
+---
+----- SOURCE CODE
+
+pub fn main() {
+ let assert <<_ as number>> = <<10>>
+ number
+}
+
+
+----- COMPILED JAVASCRIPT
+import { makeError, toBitArray } from "../gleam.mjs";
+
+const FILEPATH = "src/module.gleam";
+
+export function main() {
+  let $ = toBitArray([10]);
+  let number;
+  if ($.bitSize === 8) {
+    number = $.byteAt(0);
+  } else {
+    throw makeError(
+      "let_assert",
+      FILEPATH,
+      "my/mod",
+      3,
+      "main",
+      "Pattern match failed, no pattern matched the value.",
+      { value: $, start: 18, end: 53, pattern_start: 29, pattern_end: 44 }
+    )
+  }
+  return number;
+}

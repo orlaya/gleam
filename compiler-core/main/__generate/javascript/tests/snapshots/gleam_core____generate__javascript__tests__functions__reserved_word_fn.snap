@@ -1,0 +1,16 @@
+---
+source: compiler-core/src_refactored/__generate/javascript/tests/functions.rs
+assertion_line: 202
+expression: "pub fn class() {\n  Nil\n}\n"
+snapshot_kind: text
+---
+----- SOURCE CODE
+pub fn class() {
+  Nil
+}
+
+
+----- COMPILED JAVASCRIPT
+export function class$() {
+  return undefined;
+}

@@ -1,0 +1,24 @@
+---
+source: compiler-core/src_refactored/__core/type_/tests/warnings.rs
+assertion_line: 888
+expression: "\n@deprecated(\"Don't use this!\")\npub const a = Nil\n\npub fn b() {\n  a\n}\n"
+snapshot_kind: text
+---
+----- SOURCE CODE
+
+@deprecated("Don't use this!")
+pub const a = Nil
+
+pub fn b() {
+  a
+}
+
+
+----- WARNING
+warning: Deprecated value used
+  ┌─ /src/warning/wrn.gleam:6:3
+  │
+6 │   a
+  │   ^ This value has been deprecated
+
+It was deprecated with this message: Don't use this!

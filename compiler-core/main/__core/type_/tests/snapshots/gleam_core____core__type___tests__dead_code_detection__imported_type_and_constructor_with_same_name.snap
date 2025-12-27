@@ -1,0 +1,31 @@
+---
+source: compiler-core/src_refactored/__core/type_/tests/dead_code_detection.rs
+assertion_line: 537
+expression: "\nimport wibble.{type Wibble, Wibble}\n\npub fn main() {\n  Wibble\n}\n"
+snapshot_kind: text
+---
+----- SOURCE CODE
+-- wibble.gleam
+
+pub type Wibble {
+  Wibble
+}
+
+
+-- main.gleam
+
+import wibble.{type Wibble, Wibble}
+
+pub fn main() {
+  Wibble
+}
+
+
+----- WARNING
+warning: Unused imported type
+  ┌─ /src/warning/wrn.gleam:2:16
+  │
+2 │ import wibble.{type Wibble, Wibble}
+  │                ^^^^^^^^^^^ This imported type is never used
+
+Hint: You can safely remove it.

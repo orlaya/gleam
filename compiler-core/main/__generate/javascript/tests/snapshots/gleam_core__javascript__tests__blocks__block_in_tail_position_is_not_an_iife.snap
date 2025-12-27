@@ -1,0 +1,25 @@
+---
+source: compiler-core/src/javascript/tests/blocks.rs
+assertion_line: 221
+expression: "\npub fn b() {\n  let x = 1\n  {\n    Nil\n    x + 1\n  }\n}\n"
+snapshot_kind: text
+---
+----- SOURCE CODE
+
+pub fn b() {
+  let x = 1
+  {
+    Nil
+    x + 1
+  }
+}
+
+
+----- COMPILED JAVASCRIPT
+export function b() {
+  let x = 1;
+  {
+    undefined;
+    return x + 1;
+  }
+}

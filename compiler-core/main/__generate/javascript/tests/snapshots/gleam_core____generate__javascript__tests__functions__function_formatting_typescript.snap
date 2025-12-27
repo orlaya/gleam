@@ -1,0 +1,17 @@
+---
+source: compiler-core/src_refactored/__generate/javascript/tests/functions.rs
+assertion_line: 84
+expression: "\npub fn add(the_first_variable_that_should_be_added, the_second_variable_that_should_be_added) {\n  the_first_variable_that_should_be_added + the_second_variable_that_should_be_added\n}"
+snapshot_kind: text
+---
+----- SOURCE CODE
+
+pub fn add(the_first_variable_that_should_be_added, the_second_variable_that_should_be_added) {
+  the_first_variable_that_should_be_added + the_second_variable_that_should_be_added
+}
+
+----- TYPESCRIPT DEFINITIONS
+export function add(
+  the_first_variable_that_should_be_added: number,
+  the_second_variable_that_should_be_added: number
+): number;

@@ -1,0 +1,23 @@
+---
+source: compiler-core/src_refactored/__core/type_/tests/warnings.rs
+assertion_line: 1963
+expression: "\n        pub fn main(a, b) {\n            case a, panic, b {\n                _, _, _ -> \"no warning here!\"\n            }\n        }\n        "
+snapshot_kind: text
+---
+----- SOURCE CODE
+
+        pub fn main(a, b) {
+            case a, panic, b {
+                _, _, _ -> "no warning here!"
+            }
+        }
+        
+
+----- WARNING
+warning: Unreachable code
+  ┌─ /src/warning/wrn.gleam:3:28
+  │
+3 │             case a, panic, b {
+  │                            ^
+
+This code is unreachable because it comes after a `panic`.

@@ -1,0 +1,19 @@
+---
+source: compiler-core/src_refactored/__parse/parse/tests.rs
+assertion_line: 481
+expression: echo
+snapshot_kind: text
+---
+[
+    Expression(
+        Echo {
+            location: SrcSpan {
+                start: 0,
+                end: 4,
+            },
+            keyword_end: 4,
+            expression: None,
+            message: None,
+        },
+    ),
+]

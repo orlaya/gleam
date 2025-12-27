@@ -1,0 +1,23 @@
+---
+source: compiler-core/src_refactored/__parse/parse/tests.rs
+assertion_line: 698
+expression: "\n@external(javascript, \"one\", \"two\")\n@external(javascript, \"three\", \"four\")\npub fn one(x: Int) -> Int {\n  todo\n}\n"
+snapshot_kind: text
+---
+----- SOURCE CODE
+
+@external(javascript, "one", "two")
+@external(javascript, "three", "four")
+pub fn one(x: Int) -> Int {
+  todo
+}
+
+
+----- ERROR
+error: Syntax error
+  ┌─ /src/parse/error.gleam:3:1
+  │
+3 │ @external(javascript, "three", "four")
+  │ ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Duplicate attribute
+
+This attribute has already been given.

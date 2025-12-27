@@ -1,0 +1,32 @@
+---
+source: compiler-core/src_refactored/__core/type_/tests/errors.rs
+assertion_line: 2849
+expression: "\npub fn main() -> Result(Int, Bool) {\n  use <- want_result\n  False\n}\n\npub fn want_result(wibble: fn() -> Result(Int, Bool)) {\n  todo\n}\n"
+snapshot_kind: text
+---
+----- SOURCE CODE
+
+pub fn main() -> Result(Int, Bool) {
+  use <- want_result
+  False
+}
+
+pub fn want_result(wibble: fn() -> Result(Int, Bool)) {
+  todo
+}
+
+
+----- ERROR
+error: Type mismatch
+  ┌─ /src/one/two.gleam:4:3
+  │
+4 │   False
+  │   ^^^^^ Did you mean to wrap this in an `Error`?
+
+Expected type:
+
+    Result(Int, Bool)
+
+Found type:
+
+    Bool

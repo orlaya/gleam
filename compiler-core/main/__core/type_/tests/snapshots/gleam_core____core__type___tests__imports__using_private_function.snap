@@ -1,0 +1,25 @@
+---
+source: compiler-core/src_refactored/__core/type_/tests/imports.rs
+assertion_line: 67
+expression: "import one\n\npub fn main() {\n  one.two\n}"
+snapshot_kind: text
+---
+----- SOURCE CODE
+-- one.gleam
+fn two() { 2 }
+
+-- main.gleam
+import one
+
+pub fn main() {
+  one.two
+}
+
+----- ERROR
+error: Unknown module value
+  ┌─ /src/one/two.gleam:4:7
+  │
+4 │   one.two
+  │       ^^^
+
+The module `one` does not have a `two` value.

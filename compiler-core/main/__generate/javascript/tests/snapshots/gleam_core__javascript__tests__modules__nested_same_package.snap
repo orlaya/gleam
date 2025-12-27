@@ -1,0 +1,19 @@
+---
+source: compiler-core/src/javascript/tests/modules.rs
+expression: "import one/two/three\npub fn go() { three.go() }\n"
+---
+----- SOURCE CODE
+-- one/two/three.gleam
+pub fn go() { 1 }
+
+-- main.gleam
+import one/two/three
+pub fn go() { three.go() }
+
+
+----- COMPILED JAVASCRIPT
+import * as $three from "../one/two/three.mjs";
+
+export function go() {
+  return $three.go();
+}

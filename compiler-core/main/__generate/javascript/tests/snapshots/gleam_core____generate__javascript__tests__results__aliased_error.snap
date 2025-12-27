@@ -1,0 +1,17 @@
+---
+source: compiler-core/src_refactored/__generate/javascript/tests/results.rs
+assertion_line: 65
+expression: "import gleam.{Error as Thing}\npub fn main() { Thing(1) }"
+snapshot_kind: text
+---
+----- SOURCE CODE
+import gleam.{Error as Thing}
+pub fn main() { Thing(1) }
+
+----- COMPILED JAVASCRIPT
+import * as $gleam from "../gleam.mjs";
+import { Error as Thing } from "../gleam.mjs";
+
+export function main() {
+  return new Thing(1);
+}

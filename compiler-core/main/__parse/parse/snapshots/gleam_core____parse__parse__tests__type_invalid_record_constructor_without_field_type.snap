@@ -1,0 +1,27 @@
+---
+source: compiler-core/src_refactored/__parse/parse/tests.rs
+assertion_line: 1251
+expression: "\npub opaque type User {\n    name\n}\n"
+snapshot_kind: text
+---
+----- SOURCE CODE
+
+pub opaque type User {
+    name
+}
+
+
+----- ERROR
+error: Syntax error
+  ┌─ /src/parse/error.gleam:3:5
+  │
+3 │     name
+  │     ^^^^ I was not expecting this
+
+Each custom type variant must have a constructor:
+
+pub opaque type User {
+  User(
+    name: Type,
+  )
+}

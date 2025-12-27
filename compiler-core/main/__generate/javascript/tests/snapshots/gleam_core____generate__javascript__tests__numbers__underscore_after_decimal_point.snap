@@ -1,0 +1,17 @@
+---
+source: compiler-core/src_refactored/__generate/javascript/tests/numbers.rs
+assertion_line: 434
+expression: "\npub fn main() {\n  0._1\n}\n"
+snapshot_kind: text
+---
+----- SOURCE CODE
+
+pub fn main() {
+  0._1
+}
+
+
+----- COMPILED JAVASCRIPT
+export function main() {
+  return 0.1;
+}

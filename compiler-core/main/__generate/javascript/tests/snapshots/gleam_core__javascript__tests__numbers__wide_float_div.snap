@@ -1,0 +1,15 @@
+---
+source: compiler-core/src/javascript/tests/numbers.rs
+expression: "\npub fn go() {\n  111111111111111111111111111111. /. 22222222222222222222222222222222222.\n}\n"
+---
+----- SOURCE CODE
+
+pub fn go() {
+  111111111111111111111111111111. /. 22222222222222222222222222222222222.
+}
+
+
+----- COMPILED JAVASCRIPT
+export function go() {
+  return 1.111111111111111e29 / 2.222222222222222e34;
+}

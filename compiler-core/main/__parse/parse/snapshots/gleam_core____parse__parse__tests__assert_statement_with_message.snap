@@ -1,0 +1,32 @@
+---
+source: compiler-core/src_refactored/__parse/parse/tests.rs
+assertion_line: 1886
+expression: "assert False as \"Uh oh\""
+snapshot_kind: text
+---
+[
+    Assert(
+        Assert {
+            location: SrcSpan {
+                start: 0,
+                end: 23,
+            },
+            value: Var {
+                location: SrcSpan {
+                    start: 7,
+                    end: 12,
+                },
+                name: "False",
+            },
+            message: Some(
+                String {
+                    location: SrcSpan {
+                        start: 16,
+                        end: 23,
+                    },
+                    value: "Uh oh",
+                },
+            ),
+        },
+    ),
+]

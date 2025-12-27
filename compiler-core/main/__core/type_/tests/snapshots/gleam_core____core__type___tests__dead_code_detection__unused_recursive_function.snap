@@ -1,0 +1,24 @@
+---
+source: compiler-core/src_refactored/__core/type_/tests/dead_code_detection.rs
+assertion_line: 5
+expression: "\nfn unused(value: Int) -> Int {\n  case value {\n    0 -> 0\n    _ -> unused(value - 1)\n  }\n}\n"
+snapshot_kind: text
+---
+----- SOURCE CODE
+
+fn unused(value: Int) -> Int {
+  case value {
+    0 -> 0
+    _ -> unused(value - 1)
+  }
+}
+
+
+----- WARNING
+warning: Unused private function
+  ┌─ /src/warning/wrn.gleam:2:1
+  │
+2 │ fn unused(value: Int) -> Int {
+  │ ^^^^^^^^^^^^^^^^^^^^^^^^^^^^ This private function is never used
+
+Hint: You can safely remove it.

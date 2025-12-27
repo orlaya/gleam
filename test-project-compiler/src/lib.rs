@@ -4,7 +4,7 @@ mod generated_tests;
 use camino::Utf8PathBuf;
 use gleam_core::{
     analyse::TargetSupport,
-    build::{Codegen, Compile, Mode, NullTelemetry, Options, ProjectCompiler, Telemetry},
+    compiler::{Codegen, Compile, Mode, NullTelemetry, Options, ProjectCompiler, Telemetry},
     config::PackageConfig,
     io::{FileSystemReader, FileSystemWriter},
     paths::ProjectPaths,

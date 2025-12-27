@@ -1,0 +1,15 @@
+---
+source: compiler-core/src_refactored/__generate/javascript/tests/panic.rs
+assertion_line: 28
+expression: "\npub fn go() {\n  panic\n}\n"
+snapshot_kind: text
+---
+----- SOURCE CODE
+
+pub fn go() {
+  panic
+}
+
+
+----- TYPESCRIPT DEFINITIONS
+export function go(): any;

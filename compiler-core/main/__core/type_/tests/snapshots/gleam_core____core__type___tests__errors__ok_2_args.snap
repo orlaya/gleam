@@ -1,0 +1,29 @@
+---
+source: compiler-core/src_refactored/__core/type_/tests/errors.rs
+assertion_line: 405
+expression: "let Ok(1, x) = 1"
+snapshot_kind: text
+---
+----- SOURCE CODE
+let Ok(1, x) = 1
+
+----- ERROR
+error: Type mismatch
+  ┌─ /src/one/two.gleam:1:5
+  │
+1 │ let Ok(1, x) = 1
+  │     ^^^^^^^^
+
+Expected type:
+
+    Int
+
+Found type:
+
+    Result(Int, a)
+
+error: Incorrect arity
+  ┌─ /src/one/two.gleam:1:5
+  │
+1 │ let Ok(1, x) = 1
+  │     ^^^^^^^^ Expected 1 argument, got 2

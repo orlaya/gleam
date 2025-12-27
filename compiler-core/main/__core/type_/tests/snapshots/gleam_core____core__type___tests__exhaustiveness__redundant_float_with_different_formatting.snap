@@ -1,0 +1,28 @@
+---
+source: compiler-core/src_refactored/__core/type_/tests/exhaustiveness.rs
+assertion_line: 930
+expression: "\npub fn main(x) {\n  case x {\n    1.0 -> \"one\"\n    1.00 -> \"also one\"\n    _ -> \"other\"\n  }\n}\n"
+snapshot_kind: text
+---
+----- SOURCE CODE
+
+pub fn main(x) {
+  case x {
+    1.0 -> "one"
+    1.00 -> "also one"
+    _ -> "other"
+  }
+}
+
+
+----- WARNING
+warning: Unreachable pattern
+  ┌─ /src/warning/wrn.gleam:5:5
+  │
+5 │     1.00 -> "also one"
+  │     ^^^^
+
+This pattern cannot be reached as a previous pattern matches the same
+values.
+
+Hint: It can be safely removed.

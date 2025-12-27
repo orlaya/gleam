@@ -1,0 +1,26 @@
+---
+source: compiler-core/src/javascript/tests/custom_types.rs
+expression: "pub type Thing {\n  Thing(in: Int, class: Nil)\n}\n"
+---
+----- SOURCE CODE
+pub type Thing {
+  Thing(in: Int, class: Nil)
+}
+
+
+----- COMPILED JAVASCRIPT
+import { CustomType as $CustomType } from "../gleam.mjs";
+
+export class Thing extends $CustomType {
+  constructor(in$, class$) {
+    super();
+    this.in = in$;
+    this.class = class$;
+  }
+}
+export const Thing$Thing = (in$, class$) => new Thing(in$, class$);
+export const Thing$isThing = (value) => value instanceof Thing;
+export const Thing$Thing$in = (value) => value.in;
+export const Thing$Thing$0 = (value) => value.in;
+export const Thing$Thing$class = (value) => value.class;
+export const Thing$Thing$1 = (value) => value.class;

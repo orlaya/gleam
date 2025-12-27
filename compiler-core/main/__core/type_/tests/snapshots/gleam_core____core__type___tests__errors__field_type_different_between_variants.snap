@@ -1,0 +1,31 @@
+---
+source: compiler-core/src_refactored/__core/type_/tests/errors.rs
+assertion_line: 635
+expression: "\npub type Shape {\n    Square(x: Int, y: Int)\n    Rectangle(x: String, y: String)\n}\npub fn get_x(shape: Shape) { shape.x }\n"
+snapshot_kind: text
+---
+----- SOURCE CODE
+
+pub type Shape {
+    Square(x: Int, y: Int)
+    Rectangle(x: String, y: String)
+}
+pub fn get_x(shape: Shape) { shape.x }
+
+
+----- ERROR
+error: Unknown record field
+  ┌─ /src/one/two.gleam:6:36
+  │
+6 │ pub fn get_x(shape: Shape) { shape.x }
+  │                                    ^ This field does not exist
+
+The value being accessed has this type:
+
+    Shape
+
+It does not have fields that are common across all variants.
+
+Note: The field you are trying to access is not defined consistently across
+all variants of this custom type. To fix this, ensure that all variants
+include the field with the same name, position, and type.

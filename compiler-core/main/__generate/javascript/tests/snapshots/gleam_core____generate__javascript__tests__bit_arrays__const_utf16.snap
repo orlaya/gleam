@@ -1,0 +1,17 @@
+---
+source: compiler-core/src_refactored/__generate/javascript/tests/bit_arrays.rs
+assertion_line: 2153
+expression: "\npub const message = <<\"Hello, world!\":utf16>>\n"
+snapshot_kind: text
+---
+----- SOURCE CODE
+
+pub const message = <<"Hello, world!":utf16>>
+
+
+----- COMPILED JAVASCRIPT
+import { toBitArray, stringToUtf16 } from "../gleam.mjs";
+
+export const message = /* @__PURE__ */ toBitArray([
+  stringToUtf16("Hello, world!", true),
+]);

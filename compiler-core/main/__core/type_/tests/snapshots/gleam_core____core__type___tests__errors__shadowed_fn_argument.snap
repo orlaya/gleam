@@ -1,0 +1,25 @@
+---
+source: compiler-core/src_refactored/__core/type_/tests/errors.rs
+assertion_line: 3163
+expression: "\npub fn go(x) {\n  fn(_y) {\n    y + x\n  }\n}\n"
+snapshot_kind: text
+---
+----- SOURCE CODE
+
+pub fn go(x) {
+  fn(_y) {
+    y + x
+  }
+}
+
+
+----- ERROR
+error: Unknown variable
+  ┌─ /src/one/two.gleam:4:5
+  │
+3 │   fn(_y) {
+  │      -- This value is discarded
+4 │     y + x
+  │     ^ So this is not in scope
+
+Hint: Change `_y` to `y` or reference another variable

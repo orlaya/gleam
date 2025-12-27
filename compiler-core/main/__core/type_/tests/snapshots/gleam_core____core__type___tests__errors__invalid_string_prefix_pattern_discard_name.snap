@@ -1,0 +1,18 @@
+---
+source: compiler-core/src_refactored/__core/type_/tests/errors.rs
+assertion_line: 1376
+expression: "let assert \"prefix\" <> _boringSuffix = \"prefix-suffix\""
+snapshot_kind: text
+---
+----- SOURCE CODE
+let assert "prefix" <> _boringSuffix = "prefix-suffix"
+
+----- ERROR
+error: Invalid discard name
+  ┌─ /src/one/two.gleam:1:24
+  │
+1 │ let assert "prefix" <> _boringSuffix = "prefix-suffix"
+  │                        ^^^^^^^^^^^^^ This is not a valid discard name
+
+Hint: Discard names start with _ and contain a-z, 0-9, or _.
+Try: _boring_suffix

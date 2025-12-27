@@ -1,0 +1,33 @@
+---
+source: compiler-core/src_refactored/__core/type_/tests/exhaustiveness.rs
+assertion_line: 1439
+expression: "\npub type Wibble {\n  Wibble\n  Wobble\n}\n\npub fn main() {\n  let always_wobble = Wobble\n  case always_wobble {\n    Wibble -> panic\n    Wobble -> Nil\n  }\n}\n"
+snapshot_kind: text
+---
+----- SOURCE CODE
+
+pub type Wibble {
+  Wibble
+  Wobble
+}
+
+pub fn main() {
+  let always_wobble = Wobble
+  case always_wobble {
+    Wibble -> panic
+    Wobble -> Nil
+  }
+}
+
+
+----- WARNING
+warning: Unreachable pattern
+   ┌─ /src/warning/wrn.gleam:10:5
+   │
+10 │     Wibble -> panic
+   │     ^^^^^^
+
+This pattern cannot be reached as it matches on a variant of a type which
+is never present.
+
+Hint: It can be safely removed.

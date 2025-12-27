@@ -83,7 +83,7 @@ pub use gleam_core::error::{Error, Result};
 
 use gleam_core::{
     analyse::TargetSupport,
-    build::{Codegen, Compile, Mode, NullTelemetry, Options, Runtime, Target},
+    compiler::{Codegen, Compile, Mode, NullTelemetry, Options, Runtime, Target},
     hex::RetirementReason,
     paths::ProjectPaths,
     version::COMPILER_VERSION,

@@ -1,0 +1,30 @@
+---
+source: compiler-core/src_refactored/__core/type_/tests/errors.rs
+assertion_line: 2286
+expression: "\nimport wibble\nconst value: wibble.Int = 20\n"
+snapshot_kind: text
+---
+----- SOURCE CODE
+-- wibble.gleam
+pub type Int
+
+-- main.gleam
+
+import wibble
+const value: wibble.Int = 20
+
+
+----- ERROR
+error: Type mismatch
+  ┌─ /src/one/two.gleam:3:27
+  │
+3 │ const value: wibble.Int = 20
+  │                           ^^
+
+Expected type:
+
+    wibble.Int
+
+Found type:
+
+    Int

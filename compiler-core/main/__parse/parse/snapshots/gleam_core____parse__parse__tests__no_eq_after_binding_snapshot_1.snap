@@ -1,0 +1,15 @@
+---
+source: compiler-core/src_refactored/__parse/parse/tests.rs
+assertion_line: 605
+expression: let wibble
+snapshot_kind: text
+---
+----- SOURCE CODE
+let wibble
+
+----- ERROR
+error: Syntax error
+  ┌─ /src/parse/error.gleam:1:5
+  │
+1 │ let wibble
+  │     ^^^^^^ I was expecting a '=' after this

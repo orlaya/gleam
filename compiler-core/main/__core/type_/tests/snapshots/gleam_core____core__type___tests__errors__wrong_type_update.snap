@@ -1,0 +1,32 @@
+---
+source: compiler-core/src_refactored/__core/type_/tests/errors.rs
+assertion_line: 1587
+expression: "\n pub type Person {\n   Person(name: String, age: Int)\n }\n pub type Box(a) {\n   Box(a)\n }\n pub fn update_person(person: Person, box: Box(a)) {\n   Person(..box)\n }"
+snapshot_kind: text
+---
+----- SOURCE CODE
+
+ pub type Person {
+   Person(name: String, age: Int)
+ }
+ pub type Box(a) {
+   Box(a)
+ }
+ pub fn update_person(person: Person, box: Box(a)) {
+   Person(..box)
+ }
+
+----- ERROR
+error: Type mismatch
+  ┌─ /src/one/two.gleam:9:13
+  │
+9 │    Person(..box)
+  │             ^^^
+
+Expected type:
+
+    Person
+
+Found type:
+
+    Box(a)

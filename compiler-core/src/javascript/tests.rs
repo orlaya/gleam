@@ -206,7 +206,7 @@ pub fn compile_js(src: &str, deps: Vec<(&str, &str, &str)>) -> String {
     });
 
     output.replace(
-        std::include_str!("../../templates/echo.mjs"),
+        std::include_str!("../../__templates/echo.mjs"),
         "// ...omitted code from `templates/echo.mjs`...",
     )
 }

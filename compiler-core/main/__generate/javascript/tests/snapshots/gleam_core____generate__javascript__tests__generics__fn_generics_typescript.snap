@@ -1,0 +1,14 @@
+---
+source: compiler-core/src_refactored/__generate/javascript/tests/generics.rs
+assertion_line: 5
+expression: "pub fn identity(a) -> a {\n  a\n}\n"
+snapshot_kind: text
+---
+----- SOURCE CODE
+pub fn identity(a) -> a {
+  a
+}
+
+
+----- TYPESCRIPT DEFINITIONS
+export function identity<J>(a: J): J;

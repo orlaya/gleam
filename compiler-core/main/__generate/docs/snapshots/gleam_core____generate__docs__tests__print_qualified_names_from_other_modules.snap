@@ -1,0 +1,31 @@
+---
+source: compiler-core/src_refactored/__generate/docs/tests.rs
+assertion_line: 860
+expression: output
+snapshot_kind: text
+---
+---- SOURCE CODE
+-- gleam/option.gleam
+
+pub type Option(t) {
+  Some(t)
+  None
+}
+
+
+-- main.gleam
+
+import gleam/option.{type Option, Some, None}
+
+pub fn from_option(o: Option(t), e: e) -> Result(t, e) {
+  case o {
+    Some(t) -> Ok(t)
+    None -> Error(e)
+  }
+}
+
+
+---- VALUES
+
+--- from_option
+<pre><code>pub fn from_option(o: option.Option(t), e: e) -> Result(t, e)</code></pre>

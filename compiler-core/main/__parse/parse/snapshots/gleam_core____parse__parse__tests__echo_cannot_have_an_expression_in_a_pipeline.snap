@@ -1,0 +1,51 @@
+---
+source: compiler-core/src_refactored/__parse/parse/tests.rs
+assertion_line: 512
+expression: "[] |> echo fun |> wibble"
+snapshot_kind: text
+---
+[
+    Expression(
+        PipeLine {
+            expressions: [
+                List {
+                    location: SrcSpan {
+                        start: 0,
+                        end: 2,
+                    },
+                    elements: [],
+                    tail: None,
+                },
+                Echo {
+                    location: SrcSpan {
+                        start: 6,
+                        end: 10,
+                    },
+                    keyword_end: 10,
+                    expression: None,
+                    message: None,
+                },
+            ],
+        },
+    ),
+    Expression(
+        PipeLine {
+            expressions: [
+                Var {
+                    location: SrcSpan {
+                        start: 11,
+                        end: 14,
+                    },
+                    name: "fun",
+                },
+                Var {
+                    location: SrcSpan {
+                        start: 18,
+                        end: 24,
+                    },
+                    name: "wibble",
+                },
+            ],
+        },
+    ),
+]

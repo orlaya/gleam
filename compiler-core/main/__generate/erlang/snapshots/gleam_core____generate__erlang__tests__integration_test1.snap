@@ -1,0 +1,19 @@
+---
+source: compiler-core/src_refactored/__generate/erlang/tests.rs
+assertion_line: 216
+expression: "pub fn t() { True }"
+snapshot_kind: text
+---
+----- SOURCE CODE
+pub fn t() { True }
+
+----- COMPILED ERLANG
+-module(my@mod).
+-compile([no_auto_import, nowarn_unused_vars, nowarn_unused_function, nowarn_nomatch, inline]).
+-define(FILEPATH, "project/test/my/mod.gleam").
+-export([t/0]).
+
+-file("project/test/my/mod.gleam", 1).
+-spec t() -> boolean().
+t() ->
+    true.

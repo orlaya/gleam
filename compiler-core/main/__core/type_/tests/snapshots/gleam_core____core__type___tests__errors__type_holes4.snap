@@ -1,0 +1,17 @@
+---
+source: compiler-core/src_refactored/__core/type_/tests/errors.rs
+assertion_line: 1727
+expression: type X = List(_)
+snapshot_kind: text
+---
+----- SOURCE CODE
+type X = List(_)
+
+----- ERROR
+error: Unexpected type hole
+  ┌─ /src/one/two.gleam:1:15
+  │
+1 │ type X = List(_)
+  │               ^ I need to know what this is
+
+We need to know the exact type here so type holes cannot be used.

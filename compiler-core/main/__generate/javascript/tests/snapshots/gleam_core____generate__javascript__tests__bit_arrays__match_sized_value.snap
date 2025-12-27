@@ -1,0 +1,35 @@
+---
+source: compiler-core/src_refactored/__generate/javascript/tests/bit_arrays.rs
+assertion_line: 1135
+expression: "\npub fn go(x) {\n  let assert <<i:16>> = x\n}\n"
+snapshot_kind: text
+---
+----- SOURCE CODE
+
+pub fn go(x) {
+  let assert <<i:16>> = x
+}
+
+
+----- COMPILED JAVASCRIPT
+import { makeError, bitArraySliceToInt } from "../gleam.mjs";
+
+const FILEPATH = "src/module.gleam";
+
+export function go(x) {
+  let i;
+  if (x.bitSize === 16) {
+    i = bitArraySliceToInt(x, 0, 16, true, false);
+  } else {
+    throw makeError(
+      "let_assert",
+      FILEPATH,
+      "my/mod",
+      3,
+      "go",
+      "Pattern match failed, no pattern matched the value.",
+      { value: x, start: 18, end: 41, pattern_start: 29, pattern_end: 37 }
+    )
+  }
+  return x;
+}

@@ -1,0 +1,35 @@
+---
+source: compiler-core/src_refactored/__core/type_/tests/dead_code_detection.rs
+assertion_line: 170
+expression: "\nimport wibble.{type Wibble} as wobble\n\nfn unused() {\n  wobble.Wibble\n}\n\npub fn main() -> Wibble {\n  panic\n}\n"
+snapshot_kind: text
+---
+----- SOURCE CODE
+-- wibble.gleam
+
+pub type Wibble {
+  Wibble(Int)
+}
+
+
+-- main.gleam
+
+import wibble.{type Wibble} as wobble
+
+fn unused() {
+  wobble.Wibble
+}
+
+pub fn main() -> Wibble {
+  panic
+}
+
+
+----- WARNING
+warning: Unused private function
+  ┌─ /src/warning/wrn.gleam:4:1
+  │
+4 │ fn unused() {
+  │ ^^^^^^^^^^^ This private function is never used
+
+Hint: You can safely remove it.

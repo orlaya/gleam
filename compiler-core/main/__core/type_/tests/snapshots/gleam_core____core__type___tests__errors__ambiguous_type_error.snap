@@ -1,0 +1,30 @@
+---
+source: compiler-core/src_refactored/__core/type_/tests/errors.rs
+assertion_line: 1785
+expression: "import wibble pub type Thing { Thing }\n        pub fn main() {\n            [Thing] == [wibble.Thing]\n        }"
+snapshot_kind: text
+---
+----- SOURCE CODE
+-- wibble.gleam
+pub type Thing { Thing }
+
+-- main.gleam
+import wibble pub type Thing { Thing }
+        pub fn main() {
+            [Thing] == [wibble.Thing]
+        }
+
+----- ERROR
+error: Type mismatch
+  ┌─ /src/one/two.gleam:3:24
+  │
+3 │             [Thing] == [wibble.Thing]
+  │                        ^^^^^^^^^^^^^^
+
+Expected type:
+
+    List(Thing)
+
+Found type:
+
+    List(wibble.Thing)

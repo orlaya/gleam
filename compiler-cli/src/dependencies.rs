@@ -14,7 +14,7 @@ use ecow::{EcoString, eco_format};
 use flate2::read::GzDecoder;
 use gleam_core::{
     Error, Result,
-    build::{Mode, Target, Telemetry},
+    compiler::{Mode, Target, Telemetry},
     config::PackageConfig,
     dependency::{self, PackageFetchError},
     error::{FileIoAction, FileKind, ShellCommandFailureReason, StandardIoAction},

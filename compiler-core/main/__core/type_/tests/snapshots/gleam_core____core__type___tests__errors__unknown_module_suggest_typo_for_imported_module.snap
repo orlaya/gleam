@@ -1,0 +1,27 @@
+---
+source: compiler-core/src_refactored/__core/type_/tests/errors.rs
+assertion_line: 2250
+expression: "\nimport wibble\npub fn main() {\n  wible.wobble()\n}\n"
+snapshot_kind: text
+---
+----- SOURCE CODE
+-- wibble.gleam
+pub fn wobble() {}
+
+-- main.gleam
+
+import wibble
+pub fn main() {
+  wible.wobble()
+}
+
+
+----- ERROR
+error: Unknown module
+  ┌─ /src/one/two.gleam:4:3
+  │
+4 │   wible.wobble()
+  │   ^^^^^
+
+No module has been found with the name `wible`.
+Hint: Did you mean `wibble`?

@@ -1,0 +1,38 @@
+---
+source: compiler-core/src_refactored/build/package_interface/tests.rs
+assertion_line: 231
+expression: "\n/// Wibble's documentation\npub type Wibble(a, b) {\n  Wibble\n  Wobble\n}\n"
+snapshot_kind: text
+---
+{
+  "name": "my_package",
+  "version": "11.10.9-1.wibble+build",
+  "gleam-version-constraint": "1.0.0",
+  "modules": {
+    "my/module": {
+      "documentation": [],
+      "type-aliases": {},
+      "types": {
+        "Wibble": {
+          "documentation": " Wibble's documentation\n",
+          "deprecation": null,
+          "parameters": 2,
+          "constructors": [
+            {
+              "documentation": null,
+              "name": "Wibble",
+              "parameters": []
+            },
+            {
+              "documentation": null,
+              "name": "Wobble",
+              "parameters": []
+            }
+          ]
+        }
+      },
+      "constants": {},
+      "functions": {}
+    }
+  }
+}

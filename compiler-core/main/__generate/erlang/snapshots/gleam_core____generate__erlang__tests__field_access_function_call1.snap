@@ -1,0 +1,26 @@
+---
+source: compiler-core/src_refactored/__generate/erlang/tests.rs
+assertion_line: 472
+expression: "\npub fn main() {\n    let t = #(fn(x) { x })\n\n    t.0(5)\n}\n"
+snapshot_kind: text
+---
+----- SOURCE CODE
+
+pub fn main() {
+    let t = #(fn(x) { x })
+
+    t.0(5)
+}
+
+
+----- COMPILED ERLANG
+-module(my@mod).
+-compile([no_auto_import, nowarn_unused_vars, nowarn_unused_function, nowarn_nomatch, inline]).
+-define(FILEPATH, "project/test/my/mod.gleam").
+-export([main/0]).
+
+-file("project/test/my/mod.gleam", 2).
+-spec main() -> integer().
+main() ->
+    T = {fun(X) -> X end},
+    (erlang:element(1, T))(5).

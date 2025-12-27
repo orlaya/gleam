@@ -1,0 +1,20 @@
+---
+source: compiler-core/src_refactored/__generate/javascript/tests/modules.rs
+assertion_line: 70
+expression: "\nimport x as y\npub const z = y.v\n"
+snapshot_kind: text
+---
+----- SOURCE CODE
+-- x.gleam
+pub const v = 1
+
+-- main.gleam
+
+import x as y
+pub const z = y.v
+
+
+----- COMPILED JAVASCRIPT
+import * as $y from "../x.mjs";
+
+export const z = $y.v;

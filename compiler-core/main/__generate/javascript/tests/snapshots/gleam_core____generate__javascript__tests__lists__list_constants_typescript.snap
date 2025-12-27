@@ -1,0 +1,18 @@
+---
+source: compiler-core/src_refactored/__generate/javascript/tests/lists.rs
+assertion_line: 52
+expression: "\npub const a = []\npub const b = [1, 2, 3]\n"
+snapshot_kind: text
+---
+----- SOURCE CODE
+
+pub const a = []
+pub const b = [1, 2, 3]
+
+
+----- TYPESCRIPT DEFINITIONS
+import type * as _ from "../gleam.d.mts";
+
+export const a: _.List<any>;
+
+export const b: _.List<number>;

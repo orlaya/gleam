@@ -1,0 +1,16 @@
+---
+source: compiler-core/src_refactored/__generate/javascript/tests/custom_types.rs
+assertion_line: 943
+expression: "\n@external(javascript, \"./gleam_stdlib.d.ts\", \"Dict\")\npub type Dict(key, value)\n"
+snapshot_kind: text
+---
+----- SOURCE CODE
+
+@external(javascript, "./gleam_stdlib.d.ts", "Dict")
+pub type Dict(key, value)
+
+
+----- TYPESCRIPT DEFINITIONS
+import type { Dict as Dict$ } from "./gleam_stdlib.d.ts";
+
+export type { Dict$ };

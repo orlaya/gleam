@@ -1,0 +1,19 @@
+---
+source: compiler-core/src_refactored/__generate/javascript/tests/functions.rs
+assertion_line: 273
+expression: "pub fn main(with: Int) -> Nil {\n  main(with - 1)\n}\n"
+snapshot_kind: text
+---
+----- SOURCE CODE
+pub fn main(with: Int) -> Nil {
+  main(with - 1)
+}
+
+
+----- COMPILED JAVASCRIPT
+export function main(loop$with) {
+  while (true) {
+    let with$ = loop$with;
+    loop$with = with$ - 1;
+  }
+}

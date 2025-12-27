@@ -1,0 +1,21 @@
+---
+source: compiler-core/src_refactored/__core/type_/tests/errors.rs
+assertion_line: 2910
+expression: "\n  pub fn main() {\n    echo + 1\n  }\n"
+snapshot_kind: text
+---
+----- SOURCE CODE
+
+  pub fn main() {
+    echo + 1
+  }
+
+
+----- ERROR
+error: Invalid echo use
+  ┌─ /src/one/two.gleam:3:5
+  │
+3 │     echo + 1
+  │     ^^^^ I was expecting a value after this
+
+The `echo` keyword should be followed by a value to print.

@@ -1,6 +1,6 @@
 use gleam_core::{
     analyse::TargetSupport,
-    build::{Codegen, Compile, Mode, Options, Target},
+    compiler::{Codegen, Compile, Mode, Options, Target},
     error::{Error, ShellCommandFailureReason},
     paths::ProjectPaths,
 };

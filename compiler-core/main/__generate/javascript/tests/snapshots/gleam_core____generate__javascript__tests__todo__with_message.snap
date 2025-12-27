@@ -1,0 +1,21 @@
+---
+source: compiler-core/src_refactored/__generate/javascript/tests/todo.rs
+assertion_line: 27
+expression: "\npub fn go() {\n  todo as \"I should do this\"\n}\n"
+snapshot_kind: text
+---
+----- SOURCE CODE
+
+pub fn go() {
+  todo as "I should do this"
+}
+
+
+----- COMPILED JAVASCRIPT
+import { makeError } from "../gleam.mjs";
+
+const FILEPATH = "src/module.gleam";
+
+export function go() {
+  throw makeError("todo", FILEPATH, "my/mod", 3, "go", "I should do this", {})
+}

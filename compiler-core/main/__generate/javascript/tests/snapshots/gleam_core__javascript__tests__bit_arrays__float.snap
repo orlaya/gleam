@@ -1,0 +1,19 @@
+---
+source: compiler-core/src/javascript/tests/bit_arrays.rs
+assertion_line: 55
+expression: "\npub fn go() {\n  <<1.1:float>>\n}\n"
+snapshot_kind: text
+---
+----- SOURCE CODE
+
+pub fn go() {
+  <<1.1:float>>
+}
+
+
+----- COMPILED JAVASCRIPT
+import { toBitArray, sizedFloat } from "../gleam.mjs";
+
+export function go() {
+  return toBitArray([sizedFloat(1.1, 64, true)]);
+}

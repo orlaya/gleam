@@ -1,0 +1,29 @@
+---
+source: compiler-core/src_refactored/__core/type_/tests/errors.rs
+assertion_line: 2720
+expression: "\npub fn main() {\n  wibble(1)\n}\n\nfn wibble(arg: Result(Int, String)) { todo }\n"
+snapshot_kind: text
+---
+----- SOURCE CODE
+
+pub fn main() {
+  wibble(1)
+}
+
+fn wibble(arg: Result(Int, String)) { todo }
+
+
+----- ERROR
+error: Type mismatch
+  ┌─ /src/one/two.gleam:3:10
+  │
+3 │   wibble(1)
+  │          ^ Did you mean to wrap this in an `Ok`?
+
+Expected type:
+
+    Result(Int, String)
+
+Found type:
+
+    Int

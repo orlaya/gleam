@@ -115,5 +115,5 @@ mod schema_capnp {
         missing_debug_implementations,
         missing_copy_implementations
     )]
-    include!("../generated/schema_capnp.rs");
+    include!("../__generated/schema_capnp.rs");
 }

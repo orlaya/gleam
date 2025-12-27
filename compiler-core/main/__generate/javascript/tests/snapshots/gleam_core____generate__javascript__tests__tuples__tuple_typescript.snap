@@ -1,0 +1,15 @@
+---
+source: compiler-core/src_refactored/__generate/javascript/tests/tuples.rs
+assertion_line: 31
+expression: "\npub fn go() {\n  #(\"1\", \"2\", \"3\")\n}\n"
+snapshot_kind: text
+---
+----- SOURCE CODE
+
+pub fn go() {
+  #("1", "2", "3")
+}
+
+
+----- TYPESCRIPT DEFINITIONS
+export function go(): [string, string, string];

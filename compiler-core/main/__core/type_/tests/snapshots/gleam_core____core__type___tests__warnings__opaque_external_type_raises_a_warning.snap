@@ -1,0 +1,18 @@
+---
+source: compiler-core/src_refactored/__core/type_/tests/warnings.rs
+assertion_line: 1286
+expression: pub opaque type External
+snapshot_kind: text
+---
+----- SOURCE CODE
+pub opaque type External
+
+----- WARNING
+warning: Opaque external type
+  ┌─ /src/warning/wrn.gleam:1:1
+  │
+1 │ pub opaque type External
+  │ ^^^^^^^^^^^^^^^^^^^^^^^^
+
+This type has no constructors so making it opaque is redundant.
+Hint: Remove the `opaque` qualifier from the type definition.

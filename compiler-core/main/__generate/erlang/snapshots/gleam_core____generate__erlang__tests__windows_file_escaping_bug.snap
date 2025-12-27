@@ -1,0 +1,15 @@
+---
+source: compiler-core/src_refactored/__generate/erlang/tests.rs
+assertion_line: 999
+expression: "pub fn main() { Nil }"
+snapshot_kind: text
+---
+-module(my@mod).
+-compile([no_auto_import, nowarn_unused_vars, nowarn_unused_function, nowarn_nomatch, inline]).
+-define(FILEPATH, "C:\\root\\project\\test\\my\\mod.gleam").
+-export([main/0]).
+
+-file("C:\\root\\project\\test\\my\\mod.gleam", 1).
+-spec main() -> nil.
+main() ->
+    nil.

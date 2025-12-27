@@ -1,0 +1,18 @@
+---
+source: compiler-core/src_refactored/__parse/parse/tests.rs
+assertion_line: 592
+expression: "wibble:Int = 4"
+snapshot_kind: text
+---
+----- SOURCE CODE
+wibble:Int = 4
+
+----- ERROR
+error: Syntax error
+  ┌─ /src/parse/error.gleam:1:7
+  │
+1 │ wibble:Int = 4
+  │       ^ There must be a 'let' to bind variable to value
+
+See: https://tour.gleam.run/basics/assignments/
+Hint: Use let for binding.

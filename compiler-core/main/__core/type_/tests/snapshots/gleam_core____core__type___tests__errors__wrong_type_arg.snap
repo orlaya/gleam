@@ -1,0 +1,27 @@
+---
+source: compiler-core/src_refactored/__core/type_/tests/errors.rs
+assertion_line: 1564
+expression: "\nfn wibble(x: List(Int)) { x }\nfn main(y: List(something)) {\n  wibble(y)\n}"
+snapshot_kind: text
+---
+----- SOURCE CODE
+
+fn wibble(x: List(Int)) { x }
+fn main(y: List(something)) {
+  wibble(y)
+}
+
+----- ERROR
+error: Type mismatch
+  ┌─ /src/one/two.gleam:4:10
+  │
+4 │   wibble(y)
+  │          ^
+
+Expected type:
+
+    List(Int)
+
+Found type:
+
+    List(something)

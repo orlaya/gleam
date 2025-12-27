@@ -1,0 +1,32 @@
+---
+source: compiler-core/src_refactored/__generate/javascript/tests/bit_arrays.rs
+assertion_line: 1757
+expression: "\npub fn main() {\n  case <<>> {\n    <<\"a\", \"b\", _:bytes>> -> 1\n    _ -> 2\n  }\n}"
+snapshot_kind: text
+---
+----- SOURCE CODE
+
+pub fn main() {
+  case <<>> {
+    <<"a", "b", _:bytes>> -> 1
+    _ -> 2
+  }
+}
+
+----- COMPILED JAVASCRIPT
+import { toBitArray } from "../gleam.mjs";
+
+export function main() {
+  let $ = toBitArray([]);
+  if (
+    $.bitSize >= 8 &&
+    $.byteAt(0) === 97 &&
+    $.bitSize >= 16 &&
+    $.byteAt(1) === 98 &&
+    ($.bitSize - 16) % 8 === 0
+  ) {
+    return 1;
+  } else {
+    return 2;
+  }
+}

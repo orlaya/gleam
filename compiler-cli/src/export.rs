@@ -2,7 +2,7 @@ use camino::Utf8PathBuf;
 use gleam_core::{
     Result,
     analyse::TargetSupport,
-    build::{Codegen, Compile, Mode, Options, Target},
+    compiler::{Codegen, Compile, Mode, Options, Target},
     paths::ProjectPaths,
 };
 

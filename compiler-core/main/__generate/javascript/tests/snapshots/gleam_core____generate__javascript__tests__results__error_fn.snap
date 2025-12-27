@@ -1,0 +1,15 @@
+---
+source: compiler-core/src_refactored/__generate/javascript/tests/results.rs
+assertion_line: 20
+expression: "pub fn main() { Error }"
+snapshot_kind: text
+---
+----- SOURCE CODE
+pub fn main() { Error }
+
+----- COMPILED JAVASCRIPT
+import { Error } from "../gleam.mjs";
+
+export function main() {
+  return (var0) => { return new Error(var0); };
+}

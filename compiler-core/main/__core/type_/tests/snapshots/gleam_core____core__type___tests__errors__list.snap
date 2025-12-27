@@ -1,0 +1,26 @@
+---
+source: compiler-core/src_refactored/__core/type_/tests/errors.rs
+assertion_line: 2139
+expression: "[1, 2.0]"
+snapshot_kind: text
+---
+----- SOURCE CODE
+[1, 2.0]
+
+----- ERROR
+error: Type mismatch
+  ┌─ /src/one/two.gleam:1:5
+  │
+1 │ [1, 2.0]
+  │     ^^^
+
+All elements of a list must be the same type, but this one doesn't
+match the one before it.
+
+Expected type:
+
+    Int
+
+Found type:
+
+    Float

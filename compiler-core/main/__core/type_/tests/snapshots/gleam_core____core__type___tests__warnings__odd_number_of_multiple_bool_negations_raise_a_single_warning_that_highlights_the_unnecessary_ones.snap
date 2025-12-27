@@ -1,0 +1,15 @@
+---
+source: compiler-core/src_refactored/__core/type_/tests/warnings.rs
+assertion_line: 486
+expression: "pub fn main() { let _ = !!!!!False }"
+snapshot_kind: text
+---
+----- SOURCE CODE
+pub fn main() { let _ = !!!!!False }
+
+----- WARNING
+warning: Unnecessary double negation (!!) on bool
+  ┌─ /src/warning/wrn.gleam:1:25
+  │
+1 │ pub fn main() { let _ = !!!!!False }
+  │                         ^^^^ You can safely remove this.

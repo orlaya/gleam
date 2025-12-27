@@ -1,0 +1,34 @@
+---
+source: compiler-core/src_refactored/__generate/javascript/tests/bools.rs
+assertion_line: 81
+expression: "\npub type True { True False Nil }\npub fn go(x, y) {\n  let assert True = x\n  let assert False = x\n  let assert Nil = y\n}\n"
+snapshot_kind: text
+---
+----- SOURCE CODE
+
+pub type True { True False Nil }
+pub fn go(x, y) {
+  let assert True = x
+  let assert False = x
+  let assert Nil = y
+}
+
+
+----- TYPESCRIPT DEFINITIONS
+import type * as _ from "../gleam.d.mts";
+
+export class True extends _.CustomType {}
+export function True$True(): True$;
+export function True$isTrue(value: True$): boolean;
+
+export class False extends _.CustomType {}
+export function True$False(): True$;
+export function True$isFalse(value: True$): boolean;
+
+export class Nil extends _.CustomType {}
+export function True$Nil(): True$;
+export function True$isNil(value: True$): boolean;
+
+export type True$ = True | False | Nil;
+
+export function go(x: True$, y: True$): True$;

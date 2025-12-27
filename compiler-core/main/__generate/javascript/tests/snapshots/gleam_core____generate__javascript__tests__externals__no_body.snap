@@ -1,0 +1,16 @@
+---
+source: compiler-core/src_refactored/__generate/javascript/tests/externals.rs
+assertion_line: 239
+expression: "\n@external(javascript, \"one\", \"one\")\npub fn one(x: Int) -> Int\n"
+snapshot_kind: text
+---
+----- SOURCE CODE
+
+@external(javascript, "one", "one")
+pub fn one(x: Int) -> Int
+
+
+----- COMPILED JAVASCRIPT
+import { one } from "one";
+
+export { one };

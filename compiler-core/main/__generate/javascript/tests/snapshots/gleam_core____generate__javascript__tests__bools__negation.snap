@@ -1,0 +1,15 @@
+---
+source: compiler-core/src_refactored/__generate/javascript/tests/bools.rs
+assertion_line: 141
+expression: "pub fn negate(x) {\n    !x\n}"
+snapshot_kind: text
+---
+----- SOURCE CODE
+pub fn negate(x) {
+    !x
+}
+
+----- COMPILED JAVASCRIPT
+export function negate(x) {
+  return !x;
+}

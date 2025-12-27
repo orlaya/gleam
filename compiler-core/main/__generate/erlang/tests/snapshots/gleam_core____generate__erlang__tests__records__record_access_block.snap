@@ -1,0 +1,37 @@
+---
+source: compiler-core/src_refactored/__generate/erlang/tests/records.rs
+assertion_line: 342
+expression: "pub type Thing {\n  Thing(a: Int, b: Int)\n}\n\npub fn main() {\n  {\n    let thing = Thing(1, 2)\n    thing\n  }.a\n}"
+snapshot_kind: text
+---
+----- SOURCE CODE
+pub type Thing {
+  Thing(a: Int, b: Int)
+}
+
+pub fn main() {
+  {
+    let thing = Thing(1, 2)
+    thing
+  }.a
+}
+
+----- COMPILED ERLANG
+-module(my@mod).
+-compile([no_auto_import, nowarn_unused_vars, nowarn_unused_function, nowarn_nomatch, inline]).
+-define(FILEPATH, "project/test/my/mod.gleam").
+-export([main/0]).
+-export_type([thing/0]).
+
+-type thing() :: {thing, integer(), integer()}.
+
+-file("project/test/my/mod.gleam", 5).
+-spec main() -> integer().
+main() ->
+    erlang:element(
+        2,
+        begin
+            Thing = {thing, 1, 2},
+            Thing
+        end
+    ).

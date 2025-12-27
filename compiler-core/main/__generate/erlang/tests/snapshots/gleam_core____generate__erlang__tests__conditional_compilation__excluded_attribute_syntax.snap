@@ -1,0 +1,13 @@
+---
+source: compiler-core/src_refactored/__generate/erlang/tests/conditional_compilation.rs
+assertion_line: 5
+expression: "@target(javascript)\n  pub fn main() { 1 }\n"
+snapshot_kind: text
+---
+----- SOURCE CODE
+@target(javascript)
+  pub fn main() { 1 }
+
+
+----- COMPILED ERLANG
+-module(my@mod).

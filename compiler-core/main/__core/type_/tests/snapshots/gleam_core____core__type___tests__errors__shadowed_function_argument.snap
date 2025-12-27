@@ -1,0 +1,23 @@
+---
+source: compiler-core/src_refactored/__core/type_/tests/errors.rs
+assertion_line: 3152
+expression: "\npub fn go(_x) {\n  x + 1\n}\n"
+snapshot_kind: text
+---
+----- SOURCE CODE
+
+pub fn go(_x) {
+  x + 1
+}
+
+
+----- ERROR
+error: Unknown variable
+  ┌─ /src/one/two.gleam:3:3
+  │
+2 │ pub fn go(_x) {
+  │           -- This value is discarded
+3 │   x + 1
+  │   ^ So this is not in scope
+
+Hint: Change `_x` to `x` or reference another variable

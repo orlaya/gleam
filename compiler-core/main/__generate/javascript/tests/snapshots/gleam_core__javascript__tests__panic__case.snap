@@ -1,0 +1,31 @@
+---
+source: compiler-core/src/javascript/tests/panic.rs
+assertion_line: 74
+expression: "\npub fn go(x) {\n  case x {\n    _ -> panic\n  }\n}\n"
+snapshot_kind: text
+---
+----- SOURCE CODE
+
+pub fn go(x) {
+  case x {
+    _ -> panic
+  }
+}
+
+
+----- COMPILED JAVASCRIPT
+import { makeError } from "../gleam.mjs";
+
+const FILEPATH = "src/module.gleam";
+
+export function go(x) {
+  throw makeError(
+    "panic",
+    FILEPATH,
+    "my/mod",
+    4,
+    "go",
+    "`panic` expression evaluated.",
+    {}
+  )
+}

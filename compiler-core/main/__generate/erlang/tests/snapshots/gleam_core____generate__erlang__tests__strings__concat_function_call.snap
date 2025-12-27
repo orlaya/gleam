@@ -1,0 +1,32 @@
+---
+source: compiler-core/src_refactored/__generate/erlang/tests/strings.rs
+assertion_line: 360
+expression: "\nfn x() {\n  \"\"\n}\n\npub fn go() {\n  x() <> x()\n}\n"
+snapshot_kind: text
+---
+----- SOURCE CODE
+
+fn x() {
+  ""
+}
+
+pub fn go() {
+  x() <> x()
+}
+
+
+----- COMPILED ERLANG
+-module(my@mod).
+-compile([no_auto_import, nowarn_unused_vars, nowarn_unused_function, nowarn_nomatch, inline]).
+-define(FILEPATH, "project/test/my/mod.gleam").
+-export([go/0]).
+
+-file("project/test/my/mod.gleam", 2).
+-spec x() -> binary().
+x() ->
+    <<""/utf8>>.
+
+-file("project/test/my/mod.gleam", 6).
+-spec go() -> binary().
+go() ->
+    <<(x())/binary, (x())/binary>>.

@@ -1,0 +1,22 @@
+---
+source: compiler-core/src_refactored/__core/type_/tests/warnings.rs
+assertion_line: 3131
+expression: "\npub fn main() {\n  let assert \"hello\" as hello <> rest = \"hello, world\"\n  rest\n}\n"
+snapshot_kind: text
+---
+----- SOURCE CODE
+
+pub fn main() {
+  let assert "hello" as hello <> rest = "hello, world"
+  rest
+}
+
+
+----- WARNING
+warning: Unused variable
+  ┌─ /src/warning/wrn.gleam:3:25
+  │
+3 │   let assert "hello" as hello <> rest = "hello, world"
+  │                         ^^^^^ This variable is never used
+
+Hint: You can safely remove it.

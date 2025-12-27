@@ -2,7 +2,7 @@ use ecow::EcoString;
 use futures::future;
 use gleam_core::{
     Error, Result,
-    build::{Mode, Telemetry},
+    compiler::{Mode, Telemetry},
     config::PackageConfig,
     dependency,
     manifest::{Manifest, ManifestPackageSource, PackageChanges, Resolved},

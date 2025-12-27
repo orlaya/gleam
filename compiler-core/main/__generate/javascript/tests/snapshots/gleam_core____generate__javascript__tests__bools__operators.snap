@@ -1,0 +1,19 @@
+---
+source: compiler-core/src_refactored/__generate/javascript/tests/bools.rs
+assertion_line: 40
+expression: "\npub fn go() {\n    True && True\n    False || False\n}\n"
+snapshot_kind: text
+---
+----- SOURCE CODE
+
+pub fn go() {
+    True && True
+    False || False
+}
+
+
+----- COMPILED JAVASCRIPT
+export function go() {
+  true && true;
+  return false || false;
+}

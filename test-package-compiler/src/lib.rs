@@ -3,7 +3,7 @@ mod generated_tests;
 
 use camino::Utf8PathBuf;
 use gleam_core::{
-    build::{
+    compiler::{
         ErlangAppCodegenConfiguration, Mode, NullTelemetry, Outcome, StaleTracker, Target,
         TargetCodegenConfiguration,
     },
@@ -44,7 +44,7 @@ pub fn prepare(path: &str) -> String {
     let root = Utf8PathBuf::from("");
     let out = Utf8PathBuf::from("/out/lib/the_package");
     let lib = Utf8PathBuf::from("/out/lib");
-    let mut compiler = gleam_core::build::PackageCompiler::new(
+    let mut compiler = gleam_core::compiler::PackageCompiler::new(
         &config,
         Mode::Dev,
         &root,

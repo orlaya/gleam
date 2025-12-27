@@ -1,0 +1,17 @@
+---
+source: compiler-core/src_refactored/__core/type_/tests/errors.rs
+assertion_line: 2701
+expression: case True
+snapshot_kind: text
+---
+----- SOURCE CODE
+case True
+
+----- ERROR
+error: Missing case body
+  ┌─ /src/one/two.gleam:1:1
+  │
+1 │ case True
+  │ ^^^^^^^^^
+
+This case expression is missing its body.

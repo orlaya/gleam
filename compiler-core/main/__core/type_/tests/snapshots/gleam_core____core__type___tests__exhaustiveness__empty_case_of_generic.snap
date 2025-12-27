@@ -1,0 +1,28 @@
+---
+source: compiler-core/src_refactored/__core/type_/tests/exhaustiveness.rs
+assertion_line: 1065
+expression: "\npub fn main(x: something) {\n  case x {\n  }\n}\n"
+snapshot_kind: text
+---
+----- SOURCE CODE
+
+pub fn main(x: something) {
+  case x {
+  }
+}
+
+
+----- ERROR
+error: Inexhaustive patterns
+  ┌─ /src/one/two.gleam:3:3
+  │  
+3 │ ╭   case x {
+4 │ │   }
+  │ ╰───^
+
+This case expression does not have a pattern for all possible values. If it
+is run on one of the values without a pattern then it will crash.
+
+The missing patterns are:
+
+    _

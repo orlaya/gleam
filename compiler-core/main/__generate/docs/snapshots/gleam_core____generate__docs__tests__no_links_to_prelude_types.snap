@@ -1,0 +1,16 @@
+---
+source: compiler-core/src_refactored/__generate/docs/tests.rs
+assertion_line: 981
+expression: output
+snapshot_kind: text
+---
+---- SOURCE CODE
+-- main.gleam
+
+pub fn int_to_string(i: Int) -> String { todo }
+
+
+---- VALUES
+
+--- int_to_string
+<pre><code>pub fn int_to_string(i: Int) -> String</code></pre>

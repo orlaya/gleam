@@ -1,0 +1,30 @@
+---
+source: compiler-core/src_refactored/__core/type_/tests/warnings.rs
+assertion_line: 1506
+expression: "\nimport wibble\n\npub fn main() {\n  wibble.a\n  1\n}\n"
+snapshot_kind: text
+---
+----- SOURCE CODE
+-- wibble.gleam
+pub const a = 1
+
+-- main.gleam
+
+import wibble
+
+pub fn main() {
+  wibble.a
+  1
+}
+
+
+----- WARNING
+warning: Unused value
+  ┌─ /src/warning/wrn.gleam:5:3
+  │
+5 │   wibble.a
+  │   ^^^^^^^^ This value is never used
+
+This expression computes a value without any side effects, but then the
+value isn't used at all. You might want to assign it to a variable, or
+delete the expression entirely if it's not needed.

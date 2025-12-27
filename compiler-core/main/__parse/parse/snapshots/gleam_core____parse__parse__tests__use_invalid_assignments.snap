@@ -1,0 +1,19 @@
+---
+source: compiler-core/src_refactored/__parse/parse/tests.rs
+assertion_line: 1177
+expression: "\nfn main() {\n    use fn <- result.try(get_username())\n}\n"
+snapshot_kind: text
+---
+----- SOURCE CODE
+
+fn main() {
+    use fn <- result.try(get_username())
+}
+
+
+----- ERROR
+error: Syntax error
+  ┌─ /src/parse/error.gleam:3:9
+  │
+3 │     use fn <- result.try(get_username())
+  │         ^ I was expecting a pattern after this

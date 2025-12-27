@@ -1,0 +1,19 @@
+---
+source: compiler-core/src_refactored/__generate/javascript/tests/bit_arrays.rs
+assertion_line: 2204
+expression: "\npub fn main() {\n  <<\"Hello, world!\":utf32-little>>\n}\n"
+snapshot_kind: text
+---
+----- SOURCE CODE
+
+pub fn main() {
+  <<"Hello, world!":utf32-little>>
+}
+
+
+----- COMPILED JAVASCRIPT
+import { toBitArray, stringToUtf32 } from "../gleam.mjs";
+
+export function main() {
+  return toBitArray([stringToUtf32("Hello, world!", false)]);
+}

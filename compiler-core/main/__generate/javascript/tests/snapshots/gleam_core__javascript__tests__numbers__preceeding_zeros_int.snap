@@ -1,0 +1,17 @@
+---
+source: compiler-core/src/javascript/tests/numbers.rs
+assertion_line: 252
+expression: "\npub fn main() {\n  09_179\n}\n"
+snapshot_kind: text
+---
+----- SOURCE CODE
+
+pub fn main() {
+  09_179
+}
+
+
+----- COMPILED JAVASCRIPT
+export function main() {
+  return 9_179;
+}

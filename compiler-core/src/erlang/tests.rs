@@ -131,7 +131,7 @@ pub fn compile_test_project(
     module(&built_module.ast, &line_numbers, root)
         .unwrap()
         .replace(
-            std::include_str!("../../templates/echo.erl"),
+            std::include_str!("../../__templates/echo.erl"),
             "% ...omitted code from `templates/echo.erl`...",
         )
 }

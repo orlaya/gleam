@@ -1,0 +1,29 @@
+---
+source: compiler-core/src/javascript/tests/tuples.rs
+assertion_line: 53
+expression: "\npub fn go() {\n  #(\n    \"1\",\n    {\n      \"2\"\n      \"3\"\n    },\n  )\n}\n"
+snapshot_kind: text
+---
+----- SOURCE CODE
+
+pub fn go() {
+  #(
+    "1",
+    {
+      "2"
+      "3"
+    },
+  )
+}
+
+
+----- COMPILED JAVASCRIPT
+export function go() {
+  return [
+    "1",
+    (() => {
+      "2";
+      return "3";
+    })(),
+  ];
+}

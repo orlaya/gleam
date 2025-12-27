@@ -1,0 +1,15 @@
+---
+source: compiler-core/src_refactored/__generate/javascript/tests/todo.rs
+assertion_line: 16
+expression: "\npub fn go() {\n    todo\n}\n"
+snapshot_kind: text
+---
+----- SOURCE CODE
+
+pub fn go() {
+    todo
+}
+
+
+----- TYPESCRIPT DEFINITIONS
+export function go(): any;

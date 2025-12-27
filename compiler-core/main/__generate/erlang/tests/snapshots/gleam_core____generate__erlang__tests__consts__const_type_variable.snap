@@ -1,0 +1,17 @@
+---
+source: compiler-core/src_refactored/__generate/erlang/tests/consts.rs
+assertion_line: 40
+expression: "\nfn identity(a: a) -> a {\n  a\n}\n\nconst id: fn(a) -> a = identity\n"
+snapshot_kind: text
+---
+----- SOURCE CODE
+
+fn identity(a: a) -> a {
+  a
+}
+
+const id: fn(a) -> a = identity
+
+
+----- COMPILED ERLANG
+-module(my@mod).

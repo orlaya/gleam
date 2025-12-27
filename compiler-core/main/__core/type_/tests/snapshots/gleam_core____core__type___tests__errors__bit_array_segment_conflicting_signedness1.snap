@@ -1,0 +1,18 @@
+---
+source: compiler-core/src_refactored/__core/type_/tests/errors.rs
+assertion_line: 75
+expression: "let x = <<1:signed-unsigned>> x"
+snapshot_kind: text
+---
+----- SOURCE CODE
+let x = <<1:signed-unsigned>> x
+
+----- ERROR
+error: Invalid bit array segment
+  ┌─ /src/one/two.gleam:1:20
+  │
+1 │ let x = <<1:signed-unsigned>> x
+  │                    ^^^^^^^^ This is an extra signedness specifier
+
+Hint: This segment already has a signedness of signed.
+See: https://tour.gleam.run/data-types/bit-arrays/

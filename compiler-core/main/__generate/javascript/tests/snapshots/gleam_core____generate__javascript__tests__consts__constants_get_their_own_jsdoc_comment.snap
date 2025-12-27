@@ -1,0 +1,17 @@
+---
+source: compiler-core/src_refactored/__generate/javascript/tests/consts.rs
+assertion_line: 132
+expression: "\n/// 11 is clearly the best number!\npub const jaks_favourite_number = 11\n"
+snapshot_kind: text
+---
+----- SOURCE CODE
+
+/// 11 is clearly the best number!
+pub const jaks_favourite_number = 11
+
+
+----- COMPILED JAVASCRIPT
+/**
+ * 11 is clearly the best number!
+ */
+export const jaks_favourite_number = 11;

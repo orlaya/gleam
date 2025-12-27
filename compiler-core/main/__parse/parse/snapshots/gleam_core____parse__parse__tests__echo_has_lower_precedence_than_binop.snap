@@ -1,0 +1,47 @@
+---
+source: compiler-core/src_refactored/__parse/parse/tests.rs
+assertion_line: 496
+expression: echo 1 + 1
+snapshot_kind: text
+---
+[
+    Expression(
+        Echo {
+            location: SrcSpan {
+                start: 0,
+                end: 10,
+            },
+            keyword_end: 4,
+            expression: Some(
+                BinOp {
+                    location: SrcSpan {
+                        start: 5,
+                        end: 10,
+                    },
+                    name: AddInt,
+                    name_location: SrcSpan {
+                        start: 7,
+                        end: 8,
+                    },
+                    left: Int {
+                        location: SrcSpan {
+                            start: 5,
+                            end: 6,
+                        },
+                        value: "1",
+                        int_value: 1,
+                    },
+                    right: Int {
+                        location: SrcSpan {
+                            start: 9,
+                            end: 10,
+                        },
+                        value: "1",
+                        int_value: 1,
+                    },
+                },
+            ),
+            message: None,
+        },
+    ),
+]

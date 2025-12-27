@@ -1,0 +1,52 @@
+---
+source: compiler-core/src_refactored/__generate/javascript/tests/case_clause_guards.rs
+assertion_line: 226
+expression: "\n        pub type Person {\n          Person(username: String, name: String, age: Int)\n        }\n        pub fn main() {\n          let given_name = \"jack\"\n          let raiden = Person(\"raiden\", \"jack\", 31)\n          case given_name {\n            name if name == raiden.name -> \"It's jack\"\n            _ -> \"It's not jack\"\n          }\n        }\n        "
+snapshot_kind: text
+---
+----- SOURCE CODE
+
+        pub type Person {
+          Person(username: String, name: String, age: Int)
+        }
+        pub fn main() {
+          let given_name = "jack"
+          let raiden = Person("raiden", "jack", 31)
+          case given_name {
+            name if name == raiden.name -> "It's jack"
+            _ -> "It's not jack"
+          }
+        }
+        
+
+----- COMPILED JAVASCRIPT
+import { CustomType as $CustomType } from "../gleam.mjs";
+
+export class Person extends $CustomType {
+  constructor(username, name, age) {
+    super();
+    this.username = username;
+    this.name = name;
+    this.age = age;
+  }
+}
+export const Person$Person = (username, name, age) =>
+  new Person(username, name, age);
+export const Person$isPerson = (value) => value instanceof Person;
+export const Person$Person$username = (value) => value.username;
+export const Person$Person$0 = (value) => value.username;
+export const Person$Person$name = (value) => value.name;
+export const Person$Person$1 = (value) => value.name;
+export const Person$Person$age = (value) => value.age;
+export const Person$Person$2 = (value) => value.age;
+
+export function main() {
+  let given_name = "jack";
+  let raiden = new Person("raiden", "jack", 31);
+  let name = given_name;
+  if (name === raiden.name) {
+    return "It's jack";
+  } else {
+    return "It's not jack";
+  }
+}
